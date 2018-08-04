@@ -77,6 +77,8 @@ xhr.addEventListener("load", function(){
 	}
 });
 xhr.open ("get", "headset.tsv");
+xhr.setRequestHeader('Pragma', 'no-cache');
+xhr.setRequestHeader('Cache-Control', 'no-cache');
 xhr.send ();
 
 var statusElem = document.getElementById("status");
