@@ -1,0 +1,207 @@
+<!DOCTYPE html>
+<html lang="ja">
+
+<head>
+	<!-- Global site tag (gtag.js) - Google Analytics -->
+	<script async src="https://www.googletagmanager.com/gtag/js?id=UA-37449224-5"></script>
+	<script>
+		window.dataLayer = window.dataLayer || [];
+		function gtag(){dataLayer.push(arguments);}
+		gtag('js', new Date());
+
+		gtag('config', 'UA-37449224-5');
+	</script>
+
+	<meta charset="UTF-8">
+	<title>XRヘッドセット比較表</title>
+	<meta name="viewport" content="width=device-width,initial-scale=1.0">
+	<script src="/scripts/anime.min.js"></script>
+	<link rel="stylesheet" href="/style.css">
+
+	<meta property="og:title" content="XRヘッドセット比較表">
+	<meta property="og:description" content="XR ヘッドセットの比較表です。お手軽なフィルタや、機種名でのインクリメンタルサーチに対応しています。">
+	<meta property="og:image" content="https://xr-comparison.yutokun.com/OGP.jpg">
+	<meta property="og:image:src" content="https://xr-comparison.yutokun.com/OGP.jpg">
+	<meta name="twitter:card" content="summary_large_image">
+	<style>
+		table {
+			display: table-cell;
+		}
+		table::before {
+			content: "　";
+			display: block;
+			height: 50px;
+		}
+		thead {
+			display: grid;
+		}
+		tbody {
+			display: grid;
+			position: relative;
+			top: -2px;
+/*			z-index: -2;*/
+		}
+		tr {
+			display: inline-flex;
+		}
+		tr:hover {
+			background-color: transparent!important;
+		}
+		tr:not(:first-child) {
+			border-top: none!important;
+		}
+		th, td {
+			border-right: 2px solid #c3c3c3!important;
+		}
+		th:first-child, td:first-child {
+			border-left: 2px solid #c3c3c3!important;
+		}
+		table img {
+			object-fit: contain;
+			height: 146.2px;
+			border: none;
+			border-radius: 0;
+			margin-bottom: 0;
+			vertical-align: bottom;
+		}
+		article div {
+			font-weight: bold;
+			margin-top: 1em;
+		}
+		.vSticky {
+			position: -webkit-sticky;
+			position: sticky;
+			top: 50px;;
+			background-color: white;
+			z-index: 2;
+		}
+		.hSticky {
+			position: -webkit-sticky;
+			position: sticky;
+			left: 0;
+			background-color: white;
+			z-index: 1;
+		}
+	</style>
+</head>
+
+<body>
+	<header>
+		<span style="left: 1em;">XR ヘッドセット比較表</span>
+		<span id="status">全てを表示中</span>
+		<span id="optionButton">フィルタ</span>
+	</header>
+	<div class="options-background">
+		<div class="options">
+			<a href="javascript:ShowAll()" class="button">全て表示</a>
+			
+			<p>名前で検索</p>
+			<input type="text" id="textFilter" placeholder="例：oculus">
+
+			<p>おすすめ</p>
+			<a href="javascript:ApplyFilterSet(['virtual', 'standalone'])" class="button">VR のスタンドアロン</a>
+			<a href="javascript:ApplyFilterSet(['augmented', 'standalone'])" class="button">AR のスタンドアロン</a>
+			<a href="javascript:ApplyFilterSet(['virtual', 'head6DoF', 'bothhands6DoF'])" class="button">自由自在に仮想世界を動きたい</a>
+			<a href="javascript:ApplyFilterSet(['head3DoF', 'onehand3DoF'])" class="button">写真・動画に向いてる</a>
+			<a href="javascript:ApplyFilterSet(['mobile', 'head6DoF', 'bothhands6DoF'])" class="button">ケーブル無しで両手が使える</a>
+
+			<p>XR タイプで絞り込み</p>
+			<div class="toggle-button">
+				<label>
+					<input type="checkbox" onclick="OnCheck(this);" data-query="virtual">
+					<span class="button"><div></div>VR</span>
+				</label>
+				<label>
+					<input type="checkbox" onclick="OnCheck(this);" data-query="augmented">
+					<span class="button"><div></div>AR</span>
+				</label>
+			</div>
+
+			<p>ソフトウェアプラットフォームで絞り込み</p>
+			<div class="toggle-button">
+				<label>
+					<input type="checkbox" onclick="OnCheck(this);" data-query="oculus">
+					<span class="button"><div></div>Oculus</span>
+				</label>
+				<label>
+					<input type="checkbox" onclick="OnCheck(this);" data-query="steam">
+					<span class="button"><div></div>SteamVR</span>
+				</label>
+				<label>
+					<input type="checkbox" onclick="OnCheck(this);" data-query="winmr">
+					<span class="button"><div></div>Windows MR</span>
+				</label>
+				<label>
+					<input type="checkbox" onclick="OnCheck(this);" data-query="psvr">
+					<span class="button"><div></div>PlayStation VR</span>
+				</label>
+				<label>
+					<input type="checkbox" onclick="OnCheck(this);" data-query="daydream">
+					<span class="button"><div></div>Daydream</span>
+				</label>
+				<label>
+					<input type="checkbox" onclick="OnCheck(this);" data-query="pico">
+					<span class="button"><div></div>Pico</span>
+				</label>
+			</div>
+
+			<p>フォームファクタで絞り込み</p>
+			<div class="toggle-button">
+				<label>
+					<input type="checkbox" onclick="OnCheck(this);" data-query="pc">
+					<span class="button"><div></div>PC</span>
+				</label>
+				<label>
+					<input type="checkbox" onclick="OnCheck(this);" data-query="mobile">
+					<span class="button"><div></div>モバイル</span>
+				</label>
+				<label>
+					<input type="checkbox" onclick="OnCheck(this);" data-query="standalone">
+					<span class="button"><div></div>スタンドアロン</span>
+				</label>
+				<label>
+					<input type="checkbox" onclick="OnCheck(this);" data-query="smartphone">
+					<span class="button"><div></div>スマートフォン</span>
+				</label>
+				<label>
+					<input type="checkbox" onclick="OnCheck(this);" data-query="console">
+					<span class="button"><div></div>コンソール</span>
+				</label>
+			</div>
+
+			<p>ヘッドトラッキングで絞り込み</p>
+			<div class="toggle-button">
+				<label>
+					<input type="checkbox" onclick="OnCheck(this);" data-query="head6DoF">
+					<span class="button"><div></div>6DoF</span>
+				</label>
+				<label>
+					<input type="checkbox" onclick="OnCheck(this);" data-query="head3DoF">
+					<span class="button"><div></div>3DoF</span>
+				</label>
+			</div>
+
+			<p>ハンドトラッキングで絞り込み</p>
+			<div class="toggle-button">
+				<label>
+					<input type="checkbox" onclick="OnCheck(this);" data-query="bothhands6DoF">
+					<span class="button"><div></div>両手6DoF</span>
+				</label>
+				<label>
+					<input type="checkbox" onclick="OnCheck(this);" data-query="onehand6DoF">
+					<span class="button"><div></div>片手6DoF</span>
+				</label>
+				<label>
+					<input type="checkbox" onclick="OnCheck(this);" data-query="onehand3DoF">
+					<span class="button"><div></div>片手3DoF</span>
+				</label>
+			</div>
+			<a href="https://docs.google.com/spreadsheets/d/138p4i0TQW41hK3D7ld3bE9DZ0yLmyzpzqPpcyjUpHRw/edit?usp=sharing" style="margin-top: 1em; display: inline-block; text-align: right; width: 100%;">Google スプレッドシートで見たい場合はこちら</a>
+		</div>
+	</div>
+	<table></table>
+	<script src="/scripts/sheet-parser.js"></script>
+	<script src="/scripts/initializer.js"></script>
+</body>
+
+</html>
