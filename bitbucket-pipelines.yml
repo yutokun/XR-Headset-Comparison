@@ -1,0 +1,13 @@
+image: php:latest
+
+pipelines:
+  default:
+    - step:
+        script:
+        - echo "Pipeline Init"
+        - apt-get update
+        - apt-get -qq install git-ftp
+        - echo "Initiating Push"
+        - git ftp init -u $FTP_USERNAME -p $FTP_PASSWORD ftp://m15.coreserver.jp//public_html/xr-comparison.yutokun.com/
+        - echo "Done Pushing"
+
