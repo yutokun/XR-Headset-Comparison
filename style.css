@@ -560,6 +560,10 @@ input[type=text] {
 }
 
 @media print {
+	header {
+		position: absolute;
+	}
+
 	#optionButton {
 		display: none;
 	}
