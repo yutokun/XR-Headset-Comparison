@@ -207,6 +207,10 @@ function UpdateStatus () {
 		statusElem.innerHTML = count + "件マッチしました";
 	}
 	
+	ForceRepaint();
+}
+
+function ForceRepaint () {
 	//強制リペイント（Safari 対策）
 	statusElem.style.display = "none";
 	statusElem.offsetHeight;
@@ -217,4 +221,15 @@ window.onload = function() {
 	//Firefox で前回のチェック状態のみが残ってしまう問題の対策
 	//ロード時に全件数を正しく計算する点でも必要
 	ShowAll();
+}
+
+var timeout;
+if(window.navigator.userAgent.includes("Safari") && window.navigator.userAgent.includes("Chrome") == false) {
+	window.addEventListener("scroll", function(){
+		clearTimeout(timeout);
+		timeout = setTimeout(ForceRepaint, 50);
+	});
+	console.log("Repaint on Scroll");
+} else {
+	console.log("NOT Repaint on Scroll");
 }
