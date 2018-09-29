@@ -216,7 +216,7 @@ function ForceRepaint () {
 	//強制リペイント（Safari 対策）
 	statusElem.style.display = "none";
 	statusElem.offsetHeight;
-	statusElem.style.display = "block";
+	statusElem.style.display = "";
 }
 
 window.onload = function() {

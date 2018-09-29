@@ -257,6 +257,9 @@ header {
 header span {
 	position: absolute;
 }
+#title {
+	left: 1em;
+}
 #status {
 	left: 50%;
 	transform: translateX(-50%);
@@ -451,6 +454,16 @@ input[type=text] {
 	}
 	.recent-articles p {
 		font-size: 1.2em;
+	}
+}
+
+@media screen and (max-width:550px) {
+	#title {
+		display: none;
+	}
+	#status {
+		left: 1em;
+		transform: translateX(0%);
 	}
 }
 
