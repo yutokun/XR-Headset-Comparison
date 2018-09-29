@@ -199,7 +199,18 @@
 			<a href="https://docs.google.com/spreadsheets/d/138p4i0TQW41hK3D7ld3bE9DZ0yLmyzpzqPpcyjUpHRw/edit?usp=sharing" style="margin-top: 1em; display: inline-block; text-align: right; width: 100%;">Google スプレッドシートで見たい場合はこちら</a>
 		</div>
 	</div>
+	<div id="IEAlert" style="display: none; position: absolute; top: 45%; width: 100%; text-align: center;">
+		<p>残念ながら Internet Explorer では閲覧できません。<br>以下からお好みのブラウザを使用してください。</p>
+		<p><a href="https://vivaldi.com/ja/" target="_blank">Vivaldi</a>　<a href="https://www.google.com/chrome/" target="_blank">Chrome</a>　<a href="https://www.mozilla.org/ja/" target="_blank">Firefox</a>　<a href="https://www.opera.com/ja" target="_blank">Opera</a></p>
+	</div>
 	<table></table>
+	<script>
+		//IEはメッセージを表示する
+		var userAgent = window.navigator.userAgent.toLowerCase();
+		if (userAgent.indexOf('msie') != -1 || userAgent.indexOf('trident') != -1) {
+			document.getElementById("IEAlert").style.display = "block";
+		}
+	</script>
 	<script src="/scripts/sheet-parser.js?v=1.1"></script>
 	<script src="/scripts/initializer.js?v=1.0"></script>
 </body>
