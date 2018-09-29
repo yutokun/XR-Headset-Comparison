@@ -208,6 +208,8 @@ function UpdateStatus () {
 	}
 	
 	ForceRepaint();
+	
+	SetQueries();
 }
 
 function ForceRepaint () {
@@ -218,9 +220,52 @@ function ForceRepaint () {
 }
 
 window.onload = function() {
-	//Firefox で前回のチェック状態のみが残ってしまう問題の対策
-	//ロード時に全件数を正しく計算する点でも必要
-	ShowAll();
+	GetQueriesAndFilter();
+}
+
+function GetQueriesAndFilter() {
+	let q = getUrlVars();
+	if (q.toString()) {
+		queries = q["r"] ? q["r"].split(",") : new Array();
+		let checkboxes = document.querySelectorAll('input[type="checkbox"]');
+		for (let checkbox of checkboxes) {
+			if (queries.includes(checkbox.getAttribute("data-query"))) {
+				checkbox.checked = true;
+			}
+		}
+		inputBox.value = q["t"] ? q["t"] : "";
+		FilterCheckbox();
+		FilterText();
+	} else {
+		//Firefox で前回のチェック状態のみが残ってしまう問題の対策
+		//ロード時に全件数を正しく計算する点でも必要
+		ShowAll();
+	}
+}
+
+//クエリをアドレスバーに設定
+function SetQueries() {
+	let refines = queries.toString() ? "r=" + queries.toString() : "";
+	let text = inputBox.value ? "t=" + inputBox.value : "";
+	let query = "?";
+	if (text) query += text;
+	if (refines) query += (text ? "&" : "") + refines;
+	history.replaceState(null, null, query);
+}
+
+function getUrlVars() {
+	var vars = [], max = 0, hash = "", array = "";
+	var url = window.location.search;
+
+	hash  = url.slice(1).split('&');
+	max = hash.length;
+	for (var i = 0; i < max; i++) {
+		array = hash[i].split('=');
+		vars.push(array[0]);
+		vars[array[0]] = array[1];
+	}
+
+	return vars;
 }
 
 var timeout;
@@ -233,3 +278,4 @@ if(window.navigator.userAgent.includes("Safari") && window.navigator.userAgent.i
 } else {
 	console.log("NOT Repaint on Scroll");
 }
+
