@@ -134,7 +134,7 @@ function CloseFilters () {
 document.onkeydown = function(e) {
 	if (e.shiftKey && (e.ctrlKey || e.metaKey) && e.keyCode == 70) {
 		OpenFilters();
-	} else if (e.keyCode == 27) {
+	} else if (e.keyCode == 27 || e.keyCode == 13) {
 		CloseFilters();
 	}
 };
