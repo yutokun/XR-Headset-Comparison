@@ -16,7 +16,7 @@ time, mark, audio, video {
 	padding: 0;
 	border: 0;
 	font: inherit;
-	font-family: "Century Gothic", "ヒラギノ角ゴ Pro", sans-serif;
+	font-family: -apple-system, BlinkMacSystemFont, "Helvetica Neue", arial, "Hiragino Kaku Gothic Pro", Meiryo, sans-serif;
 	vertical-align: baseline;
 	text-decoration: none;
 }
