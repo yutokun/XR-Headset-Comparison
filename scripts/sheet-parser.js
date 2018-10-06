@@ -211,8 +211,8 @@ function SetAutomaticRepaint() {
 	let ua = window.navigator.userAgent;
 	let isSafari = ua.includes("Safari") && (ua.includes("Chrome") === false);
 	if (isSafari) {
-		window.addEventListener("scroll", function () {
 			let timeout;
+		window.addEventListener("scroll", function () {
 			clearTimeout(timeout);
 			timeout = setTimeout(ForceRepaint, 50);
 		});
