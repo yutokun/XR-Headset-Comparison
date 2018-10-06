@@ -1,13 +1,10 @@
 //最新の CSS で上書き
 var style = document.createElement("link");
 style.setAttribute("rel", "stylesheet");
-style.setAttribute("href", "/style.css?"+ Date.now());
+style.setAttribute("href", "/style.css?" + Date.now());
 document.getElementsByTagName("head")[0].appendChild(style);
 
-//var nav = document.getElementsByTagName("nav")[0];
-//var links = nav.getElementsByTagName("a");
 var header = document.getElementsByTagName("header")[0];
-var navButton = document.getElementsByClassName("nav-dropdown")[0];
 
 //モバイル Chrome のタブ色を変更する
 var tabColor = document.createElement("meta");
@@ -17,46 +14,10 @@ document.head.appendChild(tabColor);
 
 //外部リンクに target="_blank" を自動で付加
 var aTag = document.getElementsByTagName("a");
-for(var i = 0; i < aTag.length; ++i) {
+for (var i = 0; i < aTag.length; ++i) {
 	if(aTag[i].getAttribute("href").match(/http/) != null) {
 		aTag[i].setAttribute("target", "_blank");
 		console.log("added to: " + aTag[i].href);
-	}
-}
-
-//モバイルのメニューアニメーション
-var navElements = document.querySelectorAll("nav a");
-function toggleMenu() {
-	if (header.style.height == "50px" || header.style.height == "") {
-		nav.style.visibility = 'visible';
-		for (let item of navElements) {
-			item.style.color = '#dadada';
-		}
-		anime({
-			targets: ".nav-dropdown",
-			rotate: 180
-		});
-		anime({
-			targets: "header",
-			height: (links.length * 50) + "px",
-			easing: "easeOutExpo",
-			duration: 500
-		});
-	} else {
-		nav.style.visibility = '';
-		for (let item of navElements) {
-			item.style.color = '';
-		}
-		anime({
-			targets: ".nav-dropdown",
-			rotate: 0
-		});
-		anime({
-			targets: "header",
-			height: "50px",
-			easing: "easeOutExpo",
-			duration: 500
-		});
 	}
 }
 
@@ -88,6 +49,8 @@ function createButton (el) {
 	el.addEventListener('touchstart', enter);
 	el.addEventListener('touchend', out);
 }
+
+//アニメーションをボタンにセット
 var buttons = document.querySelectorAll(".button");
 for (let item of buttons) {
 	createButton(item);
@@ -97,6 +60,7 @@ for (let item of buttons) {
 var optionsBackground = document.getElementsByClassName("options-background")[0];
 var optionButton = document.getElementById("optionButton");
 var textFilter = document.getElementById("textFilter");
+
 //フィルタボタンをクリッカブルに
 optionButton.addEventListener("click", () => {
 	if(optionsBackground.style.display == "block"){
@@ -111,7 +75,7 @@ optionsBackground.addEventListener("click", () => {
 	CloseFilters();
 }, false);
 
-//フィルタ画面から背景へのイベント伝播を停止
+//誤ってフィルタが閉じてしまうことを防ぐために、フィルタ画面から背景へのイベント伝播を停止
 document.getElementsByClassName("options")[0].addEventListener("click", (e) => {
 	e.stopPropagation();
 });
