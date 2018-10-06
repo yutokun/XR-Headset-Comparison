@@ -131,6 +131,7 @@ th, td {
 	display: flex;
 	align-items: center;
 	padding: 0.5em;
+	line-height: 1.5em;
 }
 blockquote {
 	color: #666666;
@@ -242,41 +243,6 @@ iframe + h4:before {
 	display: inline-block;
 	content: "　";
 	margin: 1em 0 0 -1em;
-}
-
-.recent-articles a {
-	position: relative;
-	display: flex;
-	justify-content: center;
-	align-items: center;
-	border: 1px solid #d3d3d3;
-	border-radius: 5px;
-	overflow: hidden;
-	height: calc(400px * 0.5625 / 3);
-	margin-bottom: 1em;
-	transition-duration: 0.1s;
-	-webkit-transition-timing-function: cubic-bezier(0.230, 1.000, 0.320, 1.000);
-	-moz-transition-timing-function: cubic-bezier(0.230, 1.000, 0.320, 1.000);
-	-o-transition-timing-function: cubic-bezier(0.230, 1.000, 0.320, 1.000);
-	transition-timing-function: cubic-bezier(0.230, 1.000, 0.320, 1.000); /* easeOutQuint */
-}
-.recent-articles a:hover {
-	transform: scale(1.05, 1.05);
-	border-radius: 10px;
-}
-.recent-articles p {
-	color:white;
-	z-index: 1;
-	text-shadow: 0 0 7px black;
-	margin: auto;
-	font-size: 1.3em;
-	text-align: center;
-	line-height: 1.5em;
-}
-.recent-articles img {
-	filter: blur(5px);
-	position: absolute;
-	left: 0; /*Safari用*/
 }
 
 /*ナビゲーション*/
