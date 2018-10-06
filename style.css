@@ -16,7 +16,8 @@ time, mark, audio, video {
 	padding: 0;
 	border: 0;
 	font: inherit;
-	font-family: -apple-system, BlinkMacSystemFont, "Helvetica Neue", arial, "Hiragino Kaku Gothic Pro", Meiryo, sans-serif;
+	font-family: -apple-system, BlinkMacSystemFont, "Helvetica Neue", Krub, arial, "Hiragino Kaku Gothic Pro", "Noto Sans JP", Meiryo, sans-serif;
+	-webkit-font-smoothing: antialiased;
 	vertical-align: baseline;
 	text-decoration: none;
 }
@@ -35,6 +36,42 @@ html, body {
 	font-size: 14px;
 }
 /*共通部分*/
+/*
+* "Krub" is lisenced under the SIL Open Font License 1.1
+* by https://github.com/cadsondemak/Krub
+*/
+@font-face {
+	font-family: 'Krub';
+	font-style: normal;
+	font-weight: 300;
+	font-display: swap;
+	src:url(/fonts/Krub-Medium.ttf);
+}
+@font-face {
+	font-family: 'Krub';
+	font-style: bold;
+	font-weight: 700;
+	font-display: swap;
+	src:url(/fonts/Krub-Bold.ttf);
+}
+/*
+* "Noto Sans JP" is lisenced under the SIL Open Font License 1.1
+* by https://www.google.com/get/noto/
+*/
+@font-face {
+	font-family: 'Noto Sans JP';
+	font-style: normal;
+	font-weight: 300;
+	font-display: swap;
+	src:url(/fonts/NotoSansJP-Regular.otf) format('opentype');
+}
+@font-face {
+	font-family: 'Noto Sans JP';
+	font-style: bold;
+	font-weight: 700;
+	font-display: swap;
+	src:url(/fonts/NotoSansJP-Bold.otf) format('opentype');
+}
 body > section + section {
 	margin-top: 2em;
 }
