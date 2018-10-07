@@ -2,11 +2,8 @@ let table = document.querySelector("table");
 let allCells = [];
 let queries = [];
 
-LoadAndParseSheet();
-
 window.onload = function () {
-	SetAutomaticRepaint();
-	GetQueriesAndFilter();
+	LoadAndParseSheet();
 };
 
 function LoadAndParseSheet() {
@@ -81,11 +78,19 @@ function LoadAndParseSheet() {
 					allCells.push(cell);
 			}
 		}
+		Initialize();
 	});
 	xhr.open("get", "headset.tsv");
 	xhr.setRequestHeader('Pragma', 'no-cache');
 	xhr.setRequestHeader('Cache-Control', 'no-cache');
 	xhr.send();
+}
+
+//確実に表がロードされた後に処理するため、
+//LoadAndParseSheet から呼んでいる。
+function Initialize() {
+	SetAutomaticRepaint();
+	GetQueriesAndFilter();
 }
 
 function ApplyFilters() {
