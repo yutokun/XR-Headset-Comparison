@@ -205,10 +205,12 @@ function UpdateStatus() {
 
 //強制リペイント（Safari 対策）
 function ForceRepaint() {
-	let elem = document.querySelector("#status");
-	elem.style.display = "none";
-	elem.offsetHeight = 0; //参照のみで十分だが、JSHint のエラーを避けるため0を代入
-	elem.style.display = "";
+	let elems = document.getElementsByTagName("tr");
+	for (let i = 0; i < 2; i++) {
+		elems[i].style.display = "none";
+		elems[i].offsetHeight;
+		elems[i].style.display = "";
+	}
 }
 
 //Safari でスクロール時に強制リペイント
