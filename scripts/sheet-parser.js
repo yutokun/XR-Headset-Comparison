@@ -91,6 +91,7 @@ function LoadAndParseSheet() {
 function Initialize() {
 	SetAutomaticRepaint();
 	GetQueriesAndFilter();
+	document.getElementById("loadingMessage").style.display = "none";
 }
 
 function ApplyFilters() {
@@ -208,7 +209,9 @@ function ForceRepaint() {
 	let elems = document.getElementsByTagName("tr");
 	for (let i = 0; i < 2; i++) {
 		elems[i].style.display = "none";
+		/*jshint ignore:start*/
 		elems[i].offsetHeight;
+		/*jshint ignore:end*/
 		elems[i].style.display = "";
 	}
 }

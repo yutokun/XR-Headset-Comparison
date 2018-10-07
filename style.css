@@ -306,6 +306,14 @@ header span {
 .options p {
 	margin: 1em 0 0 0;
 }
+#loadingMessage {
+	height: calc(100% - 50px); /*ヘッダの高さを引いている*/
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	font-weight: bold;
+	font-size: 2em;
+}
 h1 {
 	margin: 0 2em 0 1em;
 	font-weight: bold;
