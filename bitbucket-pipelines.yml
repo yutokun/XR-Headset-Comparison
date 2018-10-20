@@ -8,6 +8,6 @@ pipelines:
       - apt-get update
       - apt-get -qq install git-ftp
       - echo "Initiating Push"
-      - git ftp push -commit c5529554d531c848501749a1d265680825494eea -u $FTP_USERNAME -p $FTP_PASSWORD ftp://m15.coreserver.jp//public_html/xr-comparison.yutokun.com/
+      - git ftp push -commit "c5529554d531c848501749a1d265680825494eea" -u $FTP_USERNAME -p $FTP_PASSWORD ftp://m15.coreserver.jp//public_html/xr-comparison.yutokun.com/
       - echo "Done Pushing"
 
