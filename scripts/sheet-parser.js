@@ -243,7 +243,7 @@ function GetQueriesAndFilter() {
 				checkbox.checked = true;
 			}
 		}
-		inputBox.value = q.t ? q.t : "";
+		inputBox.value = q.t ? decodeURI(q.t) : "";
 		ApplyFilters();
 	} else {
 		//Firefox で前回のチェック状態のみが残ってしまう問題の対策
