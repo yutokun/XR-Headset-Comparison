@@ -259,6 +259,7 @@ function SetQueries() {
 	let query = "?";
 	if (text) query += text;
 	if (refines) query += (text ? "&" : "") + refines;
+	query = encodeURI(query);
 	history.replaceState(null, null, query);
 }
 
