@@ -590,13 +590,12 @@ input[type=text]:focus {
 	header {
 		position: absolute;
 	}
-
-	#optionButton {
+	#optionButton, #loadingMessage, #IEAlert {
 		display: none;
 	}
 	#status {
-	left: auto;
-	right: 1em;
-	transform: translateX(0);
+		left: auto;
+		right: 1em;
+		transform: translateX(0);
 	}
 }
