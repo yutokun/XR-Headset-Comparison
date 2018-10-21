@@ -9,6 +9,6 @@ pipelines:
         - apt-get update
         - apt-get -qq install git-ftp
         - echo "Initiating Push"
-        - git ftp push -u $FTP_USERNAME -p $FTP_PASSWORD ftp://m15.coreserver.jp//public_html/xr-comparison.yutokun.com/
+        - git ftp catchup -u $FTP_USERNAME -p $FTP_PASSWORD ftp://m15.coreserver.jp//public_html/xr-comparison.yutokun.com/
         - echo "Done Pushing"
         
