@@ -309,7 +309,7 @@
 			if(text == "") {
 				data += "-\n";
 			} else {
-				text = text.replace("\n", "\\n")
+				text = text.replace(/\n/g, "\\n")
 				data += text + "\n";
 			}
 		}
