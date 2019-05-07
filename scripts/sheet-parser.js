@@ -14,20 +14,31 @@ function LoadAndParseSheet() {
 		var thead = table.appendChild(document.createElement("thead"));
 		thead.className = "vSticky";
 		var tbody = table.appendChild(document.createElement("tbody"));
-		let rows = xhr.responseText.split("\n");
+		let columns = xhr.responseText.split("\n");
+		columns.pop();
+		let rowLength = columns[0].split("\t").length;
 
-		for (var i = 0; i < rows.length; i++) {
-			var cells = rows[i].split("\t");
+		//二次元配列っぽいものの初期化
+		let sheet = [];
+		for(let i = 0; i < rowLength; i++){
+			sheet[i] = new Array(columns.length).fill();
+		}
 
-			//空行が存在した場合は次の行へ（最終行に空行が残る対策）
-			if (cells.length == 1) continue;
+		//転置された配列作成
+		for(let i = 0; i < columns.length; i++){
+			let row = columns[i].split("\t");
+			for(let j = 0; j < rowLength; j++){
+				sheet[j][i] = row[j];
+			}
+		}
 
+		for (var i = 0; i < rowLength; i++) {
 			//行要素の作成
 			let rowFrom = i < 3 ? thead : tbody;
-			var row = rowFrom.appendChild(document.createElement("tr"));
+			let row = rowFrom.appendChild(document.createElement("tr"));
 
-			for (var j = 0; j < cells.length; j++) {
-				//セルを作成
+			for (var j = 0; j < sheet[i].length; j++) {
+				//セル要素を作成
 				let cell;
 				if (i === 0) {
 					cell = row.appendChild(document.createElement("th"));
@@ -37,20 +48,21 @@ function LoadAndParseSheet() {
 				} else {
 					cell = row.appendChild(document.createElement("td"));
 				}
+				let cellData = sheet[i][j];
 
 				//タグとテキストを構築
-				if (cells[j].startsWith("/images")) {
+				if (cellData.startsWith("/images")) {
 					var img = cell.appendChild(document.createElement("img"));
-					img.setAttribute("src", cells[j]);
-				} else if (cells[j].startsWith("link:")) {
-					var link = cells[j].replace("link:", "").split(",");
+					img.setAttribute("src", cellData);
+				} else if (cellData.startsWith("link:")) {
+					var link = cellData.replace("link:", "").split(",");
 					var a = cell.appendChild(document.createElement("a"));
 					a.innerText = link[0];
 					a.setAttribute("href", link[1]);
 					a.setAttribute("target", "_blank");
 				} else {
-					cell.innerText = cells[j].replace(/\\n/g, "\n");
-					if (cells[j].startsWith("-") || cells[j].startsWith("?")) {
+					cell.innerText = cellData.replace(/\\n/g, "\n");
+					if (cellData.startsWith("-") || cellData.startsWith("?")) {
 						cell.style.backgroundColor = "rgba(0, 0, 0, 0.15)";
 						cell.style.color = "rgba(0, 0, 0, 0.5)";
 					}
@@ -71,7 +83,7 @@ function LoadAndParseSheet() {
 				}
 
 				//タグを設定
-				cell.setAttribute("data-tag", rows[1].split("\t")[j]);
+				cell.setAttribute("data-tag", sheet[1][j]);
 
 				//フィルタの準備
 				if (j > 1)
