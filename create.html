@@ -307,10 +307,10 @@
 		
 		function addLine(text) {
 			if(text == "") {
-				data += "-\n";
+				data += "-\t";
 			} else {
 				text = text.replace(/\n/g, "\\n")
-				data += text + "\n";
+				data += text + "\t";
 			}
 		}
 		
