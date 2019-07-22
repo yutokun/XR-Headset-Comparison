@@ -94,7 +94,7 @@
 	<div class="options-background">
 		<div class="options">
 			<a href="javascript:ShowAll()" class="button">全て表示</a>
-			
+
 			<p>製品名で検索</p>
 			<input type="text" id="textFilter" placeholder="例：oculus">
 
@@ -198,6 +198,18 @@
 				<label>
 					<input type="checkbox" onclick="OnCheck(this);" data-query="onehand3DoF">
 					<span class="button"><div></div>片手3DoF</span>
+				</label>
+			</div>
+
+			<p>トラッキングのタイプで絞り込み</p>
+			<div class="toggle-button">
+				<label>
+					<input type="checkbox" onclick="OnCheck(this);" data-query="inside-out">
+					<span class="button"><div></div>インサイド・アウト</span>
+				</label>
+				<label>
+					<input type="checkbox" onclick="OnCheck(this);" data-query="outside-in">
+					<span class="button"><div></div>アウトサイド・イン</span>
 				</label>
 			</div>
 		</div>
