@@ -61,6 +61,12 @@ function LoadAndParseSheet() {
 					a.setAttribute("href", link[1]);
 					a.setAttribute("target", "_blank");
 				} else {
+					// 消費税率の変動に対応
+					cellData = cellData.replace(/\\ct{(\d.+?)}/g, (all, num)=>{
+						let price = Number(num) * 1.08; // 税率
+						price = Math.floor(price);
+						return price.toLocaleString();
+					});
 					cell.innerText = cellData.replace(/\\n/g, "\n");
 					if (cellData.startsWith("-") || cellData.startsWith("?")) {
 						cell.style.backgroundColor = "rgba(0, 0, 0, 0.15)";
