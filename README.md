@@ -21,7 +21,7 @@ Copyright (c) 2019 Julian Garnier
 
 "[Noto Sans JP](https://fonts.google.com/specimen/Noto+Sans+JP)" and "[Krub](https://fonts.google.com/specimen/Krub)" licensed under the SIL Open Font License
 
-[Open Font Licensehttp://scripts.sil.org/cms/scripts/page.php?site_id=nrsi&id=OFL_web)
+[Open Font License](http://scripts.sil.org/cms/scripts/page.php?site_id=nrsi&id=OFL_web)
 
 ### 上記以外
 
