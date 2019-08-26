@@ -13,12 +13,15 @@ XR ヘッドセットを独断と偏見で比較するサイトです。  フィ
 
 ### Anime.js
 
-[MIT License](https://github.com/juliangarnier/anime/blob/master/LICENSE.md)  
 Copyright (c) 2019 Julian Garnier
 
-### Noto Sans JP & Krub
+[MIT License](https://github.com/juliangarnier/anime/blob/master/LICENSE.md)
 
-[Open Font License](http://scripts.sil.org/cms/scripts/page.php?site_id=nrsi&id=OFL_web)
+### Google Fonts
+
+"[Noto Sans JP](https://fonts.google.com/specimen/Noto+Sans+JP)" and "[Krub](https://fonts.google.com/specimen/Krub)" licensed under the SIL Open Font License
+
+[Open Font Licensehttp://scripts.sil.org/cms/scripts/page.php?site_id=nrsi&id=OFL_web)
 
 ### 上記以外
 
