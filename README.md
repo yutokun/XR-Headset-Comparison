@@ -20,4 +20,7 @@ Copyright (c) 2019 Julian Garnier
 
 [Open Font License](http://scripts.sil.org/cms/scripts/page.php?site_id=nrsi&id=OFL_web)
 
+### 上記以外
+
 上記に含まれない HTML、文章、JavaScript、画像等のファイルは、[パブリックドメイン](https://github.com/yutokun/XR-Headset-Comparison/blob/master/LICENSE.md)とします。
+
