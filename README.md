@@ -22,5 +22,5 @@ Copyright (c) 2019 Julian Garnier
 
 ### 上記以外
 
-上記に含まれない HTML、文章、JavaScript、画像等のファイルは、[パブリックドメイン](https://github.com/yutokun/XR-Headset-Comparison/blob/master/LICENSE.md)とします。
+上記に含まれない HTML、文章、JavaScript、画像等のファイルは、[CC0](https://creativecommons.org/publicdomain/zero/1.0/) または [Unlicense](https://github.com/yutokun/XR-Headset-Comparison/blob/master/LICENSE.md) とします。
 

@@ -1,7 +1,18 @@
 本リポジトリにはヘッドセットの画像やフォント、Web 用のライブラリが含まれています。
 それらの権利はヘッドセットのメーカー、あるいはオリジナルのライセンスに従います。
 
-上記に含まれない HTML、文章、JavaScript、画像等のファイルは、下記の通りパブリックドメインとします。
+### Anime.js
+
+[MIT License](https://github.com/juliangarnier/anime/blob/master/LICENSE.md)  
+Copyright (c) 2019 Julian Garnier
+
+### Noto Sans JP & Krub
+
+[Open Font License](http://scripts.sil.org/cms/scripts/page.php?site_id=nrsi&id=OFL_web)
+
+### 上記以外
+
+上記に含まれない HTML、文章、JavaScript、画像等のファイルは、[CC0](https://creativecommons.org/publicdomain/zero/1.0/) または下記の通り Unlicense とします。
 
 This is free and unencumbered software released into the public domain.
 
