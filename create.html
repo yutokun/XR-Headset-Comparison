@@ -314,7 +314,7 @@
 			addLine(form.ipd.value);
 			addLine(form.visionAcuityAdjustment.value);
 			addLine(getDensityText());
-			addLine(form.display.value);
+			addLine(getDisplayText());
 			addLine(form.fov.value);
 			addLine(form.headphone.value);
 			addLine(form.microphone.value);
@@ -365,6 +365,25 @@
 			if (isNaN(density) || density == Infinity) return "-";
 			
 			return density.toFixed(2) + "px";
+		}
+		
+		function getDisplayText() {
+			let form = document.forms.inputs;
+			let horizontal = form.horizontalPixelCount.value;
+			let vertical = form.verticalPixelCount.value;
+			let fps = form.refreshRate.value;
+			
+			let result = "";
+			if (isNumber(horizontal) && isNumber(vertical)) result += horizontal + " × " + vertical;
+			if (isNumber(fps)) {
+				if (result != "") result += " @ ";
+				result += fps + "fps";
+			}
+			return result;
+		}
+		
+		function isNumber(candidate) {
+			return !isNaN(candidate) && candidate != undefined && candidate != "";
 		}
 	</script>
 </body>
