@@ -1,6 +1,7 @@
 let table = document.querySelector("table");
 let allCells = [];
 let queries = [];
+let selling = false;
 
 window.onload = function () {
 	LoadAndParseSheet();
@@ -123,6 +124,7 @@ function ApplyFilters() {
 
 	FilterCheckbox();
 	FilterText("製品名", inputBox.value);
+	FilterText("日本国内", selling ? "◯" : "");
 
 	//まとめてリフロー開始
 	table.style.display = "";
@@ -261,6 +263,7 @@ function SetAutomaticRepaint() {
 function GetQueriesAndFilter() {
 	let q = GetQueries();
 	if (q.toString()) {
+		// チェックボックスの再現
 		queries = q.r ? q.r.split(",") : [];
 		let checkboxes = document.querySelectorAll('input[type="checkbox"]');
 		for (let checkbox of checkboxes) {
@@ -268,7 +271,14 @@ function GetQueriesAndFilter() {
 				checkbox.checked = true;
 			}
 		}
+		
+		// 販売状況の再現
+		selling = q.s == "true" ? true : false;
+		document.querySelector("#sellingInJapan").checked = selling;
+		
+		// 製品名検索の再現
 		inputBox.value = q.t ? decodeURI(q.t) : "";
+		
 		ApplyFilters();
 	} else {
 		//Firefox で前回のチェック状態のみが残ってしまう問題の対策
@@ -280,10 +290,12 @@ function GetQueriesAndFilter() {
 //クエリをアドレスバーに設定
 function SetQueries() {
 	let refines = queries.toString() ? "r=" + queries.toString() : "";
+	let sell = selling ? "s=true" : "";
 	let text = inputBox.value ? "t=" + inputBox.value : "";
 	let query = "?";
 	if (text) query += text;
-	if (refines) query += (text ? "&" : "") + refines;
+	if (sell) query += (text ? "&" : "") + sell;
+	if (refines) query += (text||selling ? "&" : "") + refines;
 	history.replaceState(null, null, query);
 }
 
@@ -318,5 +330,10 @@ function OnCheck(cb) {
 	}
 
 	//フィルタリング
+	ApplyFilters();
+}
+
+function OnCheckTextFilter(cb) {
+	selling = cb.checked;
 	ApplyFilters();
 }
