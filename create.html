@@ -207,13 +207,25 @@
 				<input type="text" name="visionAcuityAdjustment">
 			</div>
 			<div>
-				<label for="density">画素密度</label>
-				<input type="text" name="density" placeholder="22.46px">
-			</div>
-			<div>
 				<label for="display">ディスプレイ</label>
 				<input type="text" name="display" placeholder="2160 × 1200 @ 90fps">
 			</div>
+			
+			<div>
+				<label for="horizontalPixelCount">水平画素数</label>
+				<input type="text" name="horizontalPixelCount" placeholder="2160">
+			</div>
+			
+			<div>
+				<label for="verticalPixelCount">垂直画素数</label>
+				<input type="text" name="verticalPixelCount" placeholder="1200">
+			</div>
+			
+			<div>
+				<label for="refreshRate">リフレッシュレート</label>
+				<input type="text" name="refreshRate" placeholder="90">
+			</div>
+			
 			<div>
 				<label for="fov">視野角</label>
 				<input type="text" name="fov" placeholder="110度">
@@ -313,7 +325,7 @@
 			addLine(form.storage.value);
 			addLine(form.ipd.value);
 			addLine(form.visionAcuityAdjustment.value);
-			addLine(form.density.value);
+			addLine(getDensityText());
 			addLine(form.display.value);
 			addLine(form.fov.value);
 			addLine(form.headphone.value);
@@ -351,6 +363,20 @@
 				}
 			}
 			return text;
+		}
+		
+		function getDensityText() {
+			// 左右の辺を2乗したものを足して、その平方根を視野角で割る
+			let form = document.forms.inputs;
+			let horizontal = form.horizontalPixelCount.value;
+			let vertical = form.verticalPixelCount.value;
+			let fov = form.fov.value;
+			
+			let density = Math.sqrt(horizontal ** 2 + vertical ** 2) / fov;
+			
+			if (isNaN(density) || density == Infinity) return "-";
+			
+			return density.toFixed(2) + "px";
 		}
 	</script>
 </body>
