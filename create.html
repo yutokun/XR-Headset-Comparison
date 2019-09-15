@@ -231,12 +231,31 @@
 				<input type="text" name="headphonePlug" placeholder="ヘッドフォン端子なし">
 			</div>
 			<div>
+				<label for="salesStatus">国外販売状況</label>
+				<input type="text" name="salesStatus" placeholder="◯">
+			</div>
+			<div>
+				<label for="salesStatusJP">国内販売状況</label>
+				<input type="text" name="salesStatusJP" placeholder="◯">
+			</div>
+			<div>
 				<label for="priceInUSD">米ドル（税込み）</label>
 				<textarea name="priceInUSD" id="" cols="30" rows="3" placeholder="$399"></textarea>
 			</div>
 			<div>
 				<label for="priceInJPY">日本円（税込み）</label>
 				<textarea name="priceInJPY" id="" cols="30" rows="3" placeholder="¥50,000"></textarea>
+			</div>
+			<div>
+				<label for="ageLimitation">年齢制限の概要</label>
+				<textarea name="ageLimitation" id="" cols="30" rows="10"></textarea>
+			</div>
+			<div>
+				<label for="link1-name">年齢制限の情報源</label>
+				<div>
+					<input type="text" name="ageLimitationName" placeholder="">
+					<input type="text" name="ageLimitationUrl" placeholder="https://">
+				</div>
 			</div>
 			<div>
 				<label for="link1-name">リンク1</label>
@@ -300,8 +319,12 @@
 			addLine(form.headphone.value);
 			addLine(form.microphone.value);
 			addLine(form.headphonePlug.value);
+			addLine(form.salesStatus.value);
+			addLine(form.salesStatusJP.value);
 			addLine(form.priceInUSD.value);
 			addLine(form.priceInJPY.value);
+			addLine(form.ageLimitation.value);
+			addLine("link:" + form.ageLimitationName.value + "," + form.ageLimitationUrl.value);
 			addLine("link:" + form.link1Name.value + "," + form.link1Url.value);
 			addLine("link:" + form.link2Name.value + "," + form.link2Url.value);
 			addLine("link:" + form.link3Name.value + "," + form.link3Url.value);
