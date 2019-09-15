@@ -122,7 +122,7 @@ function ApplyFilters() {
 	table.style.display = "none";
 
 	FilterCheckbox();
-	FilterText();
+	FilterText("製品名", inputBox.value);
 
 	//まとめてリフロー開始
 	table.style.display = "";
@@ -135,12 +135,19 @@ let inputBox = document.getElementById("textFilter");
 inputBox.addEventListener("input", ApplyFilters);
 
 //テキストでフィルタ
-function FilterText() {
-	let reg = new RegExp(inputBox.value, "i");
+function FilterText(rowTitle, searchText) {
+	let reg = new RegExp(searchText, "i");
 	let rows = document.getElementsByTagName("tr");
-	let names = rows[0].children;
-	for (let i = 2; i < names.length; i++) {
-		if (names[i].innerText.match(reg) == null) {
+	for (currentRow of rows) {
+		if (currentRow.innerText.startsWith(rowTitle)){
+			var row = currentRow;
+			break;
+		}
+	}
+	
+	let searchTargets = row.children;
+	for (let i = 2; i < searchTargets.length; i++) {
+		if (searchTargets[i].innerText.match(reg) == null) {
 			for (let row of rows) {
 				row.children[i].style.display = "none";
 			}
