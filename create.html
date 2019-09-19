@@ -138,9 +138,21 @@
 							<span class="button"><div></div>片手3DoF</span>
 						</label>
 					</div>
+
+					<p>トラッキングのタイプ（6DoF ヘッドセットのみ）</p>
+					<div class="toggle-button">
+						<label>
+							<input type="checkbox" onclick="generate();" data-query="withSensor">
+							<span class="button"><div></div>外部センサーを利用</span>
+						</label>
+						<label>
+							<input type="checkbox" onclick="generate();" data-query="withoutSensor">
+							<span class="button"><div></div>内部センサーで処理</span>
+						</label>
+					</div>
 				</div>
 			</div>
-			
+
 			<div>
 				<label for="image">画像ファイル名</label>
 				<input type="text" name="image" placeholder="Oculus Rift CV1.png">
