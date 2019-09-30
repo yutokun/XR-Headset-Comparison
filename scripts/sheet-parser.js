@@ -64,7 +64,7 @@ function LoadAndParseSheet() {
 				} else {
 					// 消費税率の変動に対応
 					cellData = cellData.replace(/\\ct{(\d.+?)}/g, (all, num)=>{
-						let price = Number(num) * 1.08; // 税率
+						let price = Number(num) * 1.1; // 税率
 						price = Math.floor(price);
 						return price.toLocaleString();
 					});
