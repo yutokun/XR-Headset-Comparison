@@ -6,6 +6,10 @@ XR ヘッドセットを独断と偏見で比較するサイトです。  フィ
 
 [サイトはこちら](https://xr-comparison.yutokun.com/)
 
+## 貢献する方法について
+
+本サイトに修正や情報提供をしたい場合、[Contribution Guide（日本語）](CONTRIBUTING.md) を参考にして下さい。
+
 ## クレジット
 
 **株式会社IntoFree 西川 美優 様**
