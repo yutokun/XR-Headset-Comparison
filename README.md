@@ -1,3 +1,5 @@
+<p align="center"><img src="OGP.jpg" width="480"></p>
+
 # XR ヘッドセット比較表
 
 [![Build status](https://yutovr.visualstudio.com/GitHub%20CI/_apis/build/status/GitHub%20CI)](https://yutovr.visualstudio.com/GitHub%20CI/_build/latest?definitionId=2)
