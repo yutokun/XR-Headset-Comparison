@@ -166,6 +166,7 @@
 					<option value="コンソール">コンソール</option>
 					<option value="スマホ（高）">スマホ（高）</option>
 					<option value="PC、スタンドアロン両用">PC、スタンドアロン両用</option>
+					<option value="HDMI 入力">HDMI 入力</option>
 				</select>
 			</div>
 			<div>
@@ -225,10 +226,12 @@
 				<input type="text" name="verticalPixelCount" placeholder="1200" style="width: 50px;">
 				&nbsp;@&nbsp;
 				<input type="text" name="refreshRate" placeholder="90" style="width: 50px;">
+				&nbsp;fps
 			</div>
 			<div>
 				<label for="fov">視野角</label>
 				<input type="text" name="fov" placeholder="110度">
+				&nbsp;度
 			</div>
 			<div>
 				<label for="headphone">ヘッドフォン</label>
@@ -243,12 +246,32 @@
 				<input type="text" name="headphonePlug" placeholder="ヘッドフォン端子なし">
 			</div>
 			<div>
-				<label for="salesStatus">国外販売状況</label>
-				<input type="text" name="salesStatus" placeholder="◯">
+				<label for="salesStatus">海外販売状況</label>
+				<select name="salesStatus" id="">
+					<option value="◯">◯</option>
+					<option value="◯（○年後半）">◯（○年後半）</option>
+					<option value="△">△</option>
+					<option value="△（○年後半）">△（○年後半）</option>
+					<option value="×">×</option>
+					<option value="販売終了">販売終了</option>
+					<option value="販売終了（○年○月〇日）">販売終了（○年○月〇日）</option>
+					<option value="発売中止">発売中止</option>
+					<option value="開発中">開発中</option>
+				</select>
 			</div>
 			<div>
 				<label for="salesStatusJP">国内販売状況</label>
-				<input type="text" name="salesStatusJP" placeholder="◯">
+				<select name="salesStatusJP" id="">
+					<option value="◯">◯</option>
+					<option value="◯（○年後半）">◯（○年後半）</option>
+					<option value="△">△</option>
+					<option value="△（○年後半）">△（○年後半）</option>
+					<option value="×">×</option>
+					<option value="販売終了">販売終了</option>
+					<option value="販売終了（○年○月〇日）">販売終了（○年○月〇日）</option>
+					<option value="発売中止">発売中止</option>
+					<option value="開発中">開発中</option>
+				</select>
 			</div>
 			<div>
 				<label for="priceInUSD">米ドル（税込み）</label>
@@ -256,7 +279,7 @@
 			</div>
 			<div>
 				<label for="priceInJPY">日本円（税込み）</label>
-				<textarea name="priceInJPY" id="" cols="30" rows="3" placeholder="¥50,000"></textarea>
+				<textarea name="priceInJPY" id="" cols="30" rows="3" placeholder="¥50,000 or ¥\ct{49800}"></textarea>
 			</div>
 			<div>
 				<label for="ageLimitation">年齢制限の概要</label>
@@ -327,7 +350,7 @@
 			addLine(form.visionAcuityAdjustment.value);
 			addLine(getDensityText());
 			addLine(getDisplayText());
-			addLine(form.fov.value);
+			addLine(form.fov.value + "度");
 			addLine(form.headphone.value);
 			addLine(form.microphone.value);
 			addLine(form.headphonePlug.value);
