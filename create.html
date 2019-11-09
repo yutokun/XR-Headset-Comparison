@@ -350,7 +350,7 @@
 			addLine(form.visionAcuityAdjustment.value);
 			addLine(getDensityText());
 			addLine(getDisplayText());
-			addLine(form.fov.value + "度");
+			addLine(getFovText());
 			addLine(form.headphone.value);
 			addLine(form.microphone.value);
 			addLine(form.headphonePlug.value);
@@ -415,6 +415,12 @@
 				result += fps + "fps";
 			}
 			return result;
+		}
+		
+		function getFovText() {
+			let form = document.forms.inputs;
+			let fov = form.fov.value;
+			return fov != "" ? fov + "度" : "-";
 		}
 		
 		function isNumber(candidate) {
