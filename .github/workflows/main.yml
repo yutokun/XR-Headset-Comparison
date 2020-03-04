@@ -1,17 +1,27 @@
-name: CI
+name: Deploy Website
 
-on: [push]
+on: 
+  push:
+    branches: master
 
 jobs:
-  build:
+  deploy:
 
     runs-on: ubuntu-latest
-    
+
     steps:
-    - uses: actions/checkout@v1
-    - name: Run a one-line script
-      run: echo Hello, world!
-    - name: Run a multi-line script
-      run: |
-        echo Add other actions to build,
-        echo test, and deploy your project.
+    - uses: actions/checkout@v2
+
+    - name: FTP Deploy
+      uses: SamKirkland/FTP-Deploy-Action@3.0.0
+      with:
+        # Deployment destination server & path. Formatted as protocol://domain.com:port/full/destination/path/
+        ftp-server: ${{ secrets.ftp_server }}
+        # FTP account username
+        ftp-username: ${{ secrets.ftp_username }}
+        # FTP account password
+        ftp-password: ${{ secrets.ftp_password }}
+        # The local folder to copy, defaults to root project folder
+#         local-dir: # optional
+        # Passes through options into git-ftp
+#         git-ftp-args: # optional
