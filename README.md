@@ -2,7 +2,7 @@
 
 # XR ヘッドセット比較表
 
-![](https://github.com/yutokun/XR-Headset-Comparison/workflows/Deploy Website/badge.svg)
+![](https://github.com/yutokun/XR-Headset-Comparison/workflows/Deploy%20Website/badge.svg)
 
 XR ヘッドセットを独断と偏見で比較するサイトです。  フィルタリングや、その結果をシェアすることも可能。
 
