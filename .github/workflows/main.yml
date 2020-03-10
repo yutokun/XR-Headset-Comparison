@@ -37,7 +37,7 @@ jobs:
     - name: Tweet
       uses: ethomson/send-tweet-action@v1
       with:
-        status: "@yutoVR 比較表がデプロイされました。 ${{ env.commitmsg }} https://xr-comparison.yutokun.com/"
+        status: "@yutoVR 比較表がデプロイされました。変更内容: ${{ env.commitmsg }} https://xr-comparison.yutokun.com/"
         consumer-key: ${{ secrets.TWITTER_API_KEY }}
         consumer-secret: ${{ secrets.TWITTER_API_SECRET_KEY }}
         access-token: ${{ secrets.TWITTER_ACCESS_TOKEN }}
