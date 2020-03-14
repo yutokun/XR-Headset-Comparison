@@ -55,11 +55,14 @@ function LoadAndParseSheet() {
 				if (cellData.startsWith("/images")) {
 					var img = cell.appendChild(document.createElement("img"));
 					img.setAttribute("src", cellData);
-				} else if (cellData.startsWith("link:")) {
-					var link = cellData.replace("link:", "").split(",");
-					var a = cell.appendChild(document.createElement("a"));
-					a.innerText = link[0];
-					a.setAttribute("href", link[1]);
+				} else if (cellData.includes("\link")) {
+					// リンク
+					// TODO 複数リンク・任意の位置への対応
+					let linkData = cellData.match(/\\link{(.+?),(.+?)}/);
+					console.log(linkData);
+					let a = cell.appendChild(document.createElement("a"));
+					a.innerText = linkData[1];
+					a.setAttribute("href", linkData[2]);
 					a.setAttribute("target", "_blank");
 				} else {
 					// 税込み価格計算
