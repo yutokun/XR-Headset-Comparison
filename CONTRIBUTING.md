@@ -36,12 +36,13 @@
 
 | 機能 | 記法 | 例 | 結果 |
 | --- | --- | --- | --- |
-| 画像を貼る | `/path/to/image.jpg` | `images/headsets/Rift S.jpg` | <img src="images/headsets/Rift S.jpg"> |
-| リンクを貼る | `link:リンク名,URL` | `link:Rift S 公式サイト,https://www.oculus.com/rift-s/` | [Rift S 公式サイト](https://www.oculus.com/rift-s/) |
+| 画像を貼る | `\image{/path/to/image.jpg}` | `\image{images/headsets/Rift S.jpg}` | <img src="images/headsets/Rift S.jpg"> |
+| リンクを貼る | `\link{リンク名,URL`} | `\link{Rift S 公式サイト,https://www.oculus.com/rift-s/}` | [Rift S 公式サイト](https://www.oculus.com/rift-s/) |
 | 税抜き価格から税込価格を計算する | `\ct{税抜き価格}` | `\ct{89882}` | 98870 |
 | 改行する | `\n` | `\n` | 改行コードに変換されます |
 
 ## デプロイについて
+
 本リポジトリは GitHub Actions を利用しており、master ブランチにプッシュされたコミット差分が自動的にデプロイされる仕組みになっています。通常、master への push が完了してから5分以内にウェブサイト上で変更を確認できるようになります。
 
 この仕組み上、本番環境での不整合を避けるため、master への force push は行えない設定としています。
