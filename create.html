@@ -335,7 +335,7 @@
 			data = "";
 			addLine(form.title.value);
 			addLine(getQueries());
-			addLine("/images/headsets/" + encodeURIComponent(form.image.value));
+			addLine("\image{/images/headsets/" + encodeURIComponent(form.image.value) + "}");
 			addLine(form.type.value);
 			addLine(form.description.value);
 			addLine(form.platform.value);
@@ -359,10 +359,10 @@
 			addLine(form.priceInUSD.value);
 			addLine(form.priceInJPY.value);
 			addLine(form.ageLimitation.value);
-			addLine("link:" + form.ageLimitationName.value + "," + form.ageLimitationUrl.value);
-			addLine("link:" + form.link1Name.value + "," + form.link1Url.value);
-			addLine("link:" + form.link2Name.value + "," + form.link2Url.value);
-			addLine("link:" + form.link3Name.value + "," + form.link3Url.value);
+			addLine("\link{" + form.ageLimitationName.value + "," + form.ageLimitationUrl.value + "}");
+			addLine("\link{" + form.link1Name.value + "," + form.link1Url.value + "}");
+			addLine("\link{" + form.link2Name.value + "," + form.link2Url.value + "}");
+			addLine("\link{" + form.link3Name.value + "," + form.link3Url.value + "}");
 			
 			document.forms.result.result.textContent = data;
 		}
