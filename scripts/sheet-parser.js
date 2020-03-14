@@ -62,12 +62,15 @@ function LoadAndParseSheet() {
 					a.setAttribute("href", link[1]);
 					a.setAttribute("target", "_blank");
 				} else {
-					// 消費税率の変動に対応
+					// 税込み価格計算
+					// TODO 消費税率の変動に対応
 					cellData = cellData.replace(/\\ct{(\d.+?)}/g, (all, num)=>{
 						let price = Number(num) * 1.1; // 税率
 						price = Math.floor(price);
 						return price.toLocaleString();
 					});
+					
+					// 改行
 					cell.innerText = cellData.replace(/\\n/g, "\n");
 					if (cellData.startsWith("-") || cellData.startsWith("?")) {
 						cell.style.backgroundColor = "rgba(0, 0, 0, 0.15)";
