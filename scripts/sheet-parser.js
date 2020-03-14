@@ -52,10 +52,10 @@ function LoadAndParseSheet() {
 				let cellData = sheet[i][j];
 
 				//タグとテキストを構築
-				if (cellData.startsWith("/images")) {
-					var img = cell.appendChild(document.createElement("img"));
-					img.setAttribute("src", cellData);
-				} else if (cellData.includes("\link")) {
+				if (cellData.includes("\\image")) {
+					let img = cell.appendChild(document.createElement("img"));
+					let path = cellData.match(/\\image{(.+?)}/)[1];
+					img.setAttribute("src", path);
 				} else if (cellData.includes("\\link")) {
 					// リンク
 					// TODO 複数リンク・任意の位置への対応
