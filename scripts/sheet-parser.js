@@ -56,10 +56,10 @@ function LoadAndParseSheet() {
 					var img = cell.appendChild(document.createElement("img"));
 					img.setAttribute("src", cellData);
 				} else if (cellData.includes("\link")) {
+				} else if (cellData.includes("\\link")) {
 					// リンク
 					// TODO 複数リンク・任意の位置への対応
 					let linkData = cellData.match(/\\link{(.+?),(.+?)}/);
-					console.log(linkData);
 					let a = cell.appendChild(document.createElement("a"));
 					a.innerText = linkData[1];
 					a.setAttribute("href", linkData[2]);
