@@ -24,7 +24,6 @@ for (var i = 0; i < aTag.length; ++i) {
 //ボタンのアニメーション
 function createButton (el) {
 	function over () {
-		console.log(el.style.transform);
 		let isModifiedSize = !(el.style.transform == "scale(1)" || el.style.transform == "");
 		if (isModifiedSize) return;
 		anime.remove(el);
