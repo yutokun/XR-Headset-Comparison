@@ -442,6 +442,7 @@ select:focus {
 }
 
 .toggle-button span {
+	position: relative;
 	padding-left: 3.4em;
 }
 
