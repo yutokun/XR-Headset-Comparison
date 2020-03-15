@@ -24,6 +24,9 @@ for (var i = 0; i < aTag.length; ++i) {
 //ボタンのアニメーション
 function createButton (el) {
 	function over () {
+		console.log(el.style.transform);
+		let isModifiedSize = !(el.style.transform == "scale(1)" || el.style.transform == "");
+		if (isModifiedSize) return;
 		anime.remove(el);
 		anime({
 			targets: el,
@@ -33,7 +36,7 @@ function createButton (el) {
 			duration: 400
 		});
 	}
-	function out () {
+	function leave () {
 		anime.remove(el);
 		anime({
 			targets: el,
@@ -44,10 +47,9 @@ function createButton (el) {
 		});
 	}
 	el.onmouseover = over;
-	el.onmouseout = out;
-	el.onmouseleave = out;
+	el.onmouseleave = leave;
 	el.addEventListener('touchstart', over);
-	el.addEventListener('touchend', out);
+	el.addEventListener('touchend', leave);
 }
 
 //アニメーションをボタンにセット
