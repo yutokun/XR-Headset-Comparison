@@ -23,7 +23,7 @@ for (var i = 0; i < aTag.length; ++i) {
 
 //ボタンのアニメーション
 function createButton (el) {
-	function enter () {
+	function over () {
 		anime.remove(el);
 		anime({
 			targets: el,
@@ -43,10 +43,10 @@ function createButton (el) {
 			duration: 100
 		});
 	}
-	el.onmouseenter = enter;
+	el.onmouseover = over;
 	el.onmouseout = out;
 	el.onmouseleave = out;
-	el.addEventListener('touchstart', enter);
+	el.addEventListener('touchstart', over);
 	el.addEventListener('touchend', out);
 }
 
