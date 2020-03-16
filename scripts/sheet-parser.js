@@ -253,7 +253,7 @@ function ForceRepaint() {
 function LoadTypeSquare(){
 	let typeSquare = document.createElement("script");
 	typeSquare.setAttribute("type", "text/javascript");
-	typeSquare.setAttribute("src", "//typesquare.com/3/tsst/script/ja/typesquare.js?5e6f8bc85f0443c886cc1ec4ac1e0217&fadein=1000");
+	typeSquare.setAttribute("src", "//typesquare.com/3/tsst/script/ja/typesquare.js?5e6f8bc85f0443c886cc1ec4ac1e0217");
 	typeSquare.setAttribute("charset", "utf-8");
 	let head = document.getElementsByTagName("head");
 	head[0].appendChild(typeSquare);
