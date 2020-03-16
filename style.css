@@ -131,6 +131,9 @@ th {
 td {
 	font-family: "UD新ゴ R";
 }
+td.hSticky {
+	font-family: -apple-system, BlinkMacSystemFont, "Helvetica Neue", Krub, arial, "Hiragino Kaku Gothic Pro", "Noto Sans JP", Meiryo, sans-serif;
+}
 th, td {
 	display: flex;
 	align-items: center;
@@ -272,6 +275,7 @@ header span {
 	left: 50%;
 	transform: translateX(-50%);
 	font-weight: normal;
+	font-family: "UD新ゴ R";
 }
 #optionButton {
 	display: flex;
