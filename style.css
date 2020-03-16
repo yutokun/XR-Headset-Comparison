@@ -128,12 +128,14 @@ th {
 	font-weight: bold;
 	text-align: left;
 }
+td {
+	font-family: "UD新ゴ R";
+}
 th, td {
 	display: flex;
 	align-items: center;
 	padding: 0.5em;
 	line-height: 1.5em;
-	font-family: "UD新ゴ R";
 }
 blockquote {
 	color: #666666;
@@ -211,7 +213,8 @@ a:hover {
 	background-color: #59a5ff;
 	border: 1px solid white;
 	border-radius: 5px;
-	font-size: 0.8rem;
+	font-size: 0.9rem;
+	font-family: "UD新ゴ R";
 }
 b,
 strong {
