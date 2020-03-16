@@ -251,6 +251,7 @@ function ForceRepaint() {
 }
 
 function LoadTypeSquare(){
+	if (navigator.platform.includes("Mac") || navigator.platform.includes("iP")) return;
 	let typeSquare = document.createElement("script");
 	typeSquare.setAttribute("type", "text/javascript");
 	typeSquare.setAttribute("src", "//typesquare.com/3/tsst/script/ja/typesquare.js?5e6f8bc85f0443c886cc1ec4ac1e0217");

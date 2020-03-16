@@ -129,7 +129,7 @@ th {
 	text-align: left;
 }
 td {
-	font-family: -apple-system, BlinkMacSystemFont, "UD新ゴ R";
+	font-family: "UD新ゴ R";
 }
 td.hSticky {
 	font-family: -apple-system, BlinkMacSystemFont, "Helvetica Neue", Krub, arial, "Hiragino Kaku Gothic Pro", "Noto Sans JP", Meiryo, sans-serif;
@@ -217,7 +217,7 @@ a:hover {
 	border: 1px solid white;
 	border-radius: 5px;
 	font-size: 0.9rem;
-	font-family: -apple-system, BlinkMacSystemFont, "UD新ゴ R";
+	font-family: "UD新ゴ R";
 }
 b,
 strong {
@@ -275,7 +275,7 @@ header span {
 	left: 50%;
 	transform: translateX(-50%);
 	font-weight: normal;
-	font-family: -apple-system, BlinkMacSystemFont, "UD新ゴ R";
+	font-family: "UD新ゴ R";
 }
 #optionButton {
 	display: flex;
