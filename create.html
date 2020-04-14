@@ -364,6 +364,7 @@
 			addLine("\link{" + form.link2Name.value + "," + form.link2Url.value + "}");
 			addLine("\link{" + form.link3Name.value + "," + form.link3Url.value + "}");
 			
+			data = data.slice(0, -1);
 			document.forms.result.result.textContent = data;
 		}
 		
