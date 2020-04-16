@@ -307,6 +307,7 @@ function SetQueries() {
 	if (text) query += text;
 	if (sell) query += (text ? "&" : "") + sell;
 	if (refines) query += (text||selling ? "&" : "") + refines;
+	query = encodeURI(query);
 	history.replaceState(null, null, query);
 }
 
@@ -317,6 +318,7 @@ function GetQueries() {
 		hash = "",
 		array = "";
 	let url = window.location.search;
+	url = decodeURI(url);
 
 	hash = url.slice(1).split('&');
 	max = hash.length;
