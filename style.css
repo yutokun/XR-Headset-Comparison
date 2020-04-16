@@ -81,8 +81,7 @@ thead {
 tbody {
 	display: grid;
 	position: relative;
-	top: -2px;
-	/*			z-index: -2;*/
+	top: 48px;
 }
 tr {
 	display: inline-flex;
