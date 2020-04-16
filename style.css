@@ -26,10 +26,6 @@ article, aside, details, figcaption, figure,
 footer, header, hgroup, menu, nav, section {
 	display: block;
 }
-ol, ul {
-	list-style: none;
-	margin-bottom: 1em;
-}
 html, body {
 	line-height: 1.4;
 	height: 100%;
@@ -72,57 +68,29 @@ html, body {
 	font-display: swap;
 	src:url(/fonts/NotoSansJP-Bold.otf) format('opentype');
 }
-body > section + section {
-	margin-top: 2em;
-}
-footer {
-	margin: 0 auto;
-}
-footer > .about {
-	border-left: 5px solid #22ace8;
-}
-h2 {
-	font-size: 2rem;
-	margin-bottom: 0.5em;
-	font-weight: bold;
-}
-h3 {
-	font-size: 1.4rem;
-	margin: 0 auto 0.5em;
-	padding: 0.25em 0.5em;
-	background-color: #f4f4f4;
-	border-left: 5px solid #22ace8;
-}
-h4 {
-	font-size: 1.2em;
-	font-weight: bold;
-	padding: 0 1em 0 0.25em;
-	background: linear-gradient(to top, white 2px, #74c9ef 2px, #74c9ef 11px, white 11px);
-	display: inline;
-}
-
-dl {
-	margin-bottom: 1em;
-}
-dt {
-	font-weight: bold;
-	margin: 1em auto 0.5em;
-}
-dt ~ dt {
-	margin-top: 2em;
-}
 table {
+	display: table-cell;
 	border-collapse: collapse; /*これをしないとtrにボーダーが効かない*/
 	margin-bottom: 2em;
 	width: 100%;
 	font-size: 15px;
 }
+thead {
+	display: grid;
+}
+tbody {
+	display: grid;
+	position: relative;
+	top: -2px;
+	/*			z-index: -2;*/
+}
 tr {
+	display: inline-flex;
 	border-top: 2px solid #c3c3c3;
 	border-bottom: 2px solid #c3c3c3;
 }
-tr:hover {
-	background-color: #efefef;
+tr:not(:first-child) {
+	border-top: none;
 }
 th {
 	font-weight: bold;
@@ -139,27 +107,45 @@ th, td {
 	align-items: center;
 	padding: 0.5em;
 	line-height: 1.5em;
+	border-right: 2px solid #c3c3c3;
+}
+th:first-child, td:first-child {
+	border-left: 2px solid #c3c3c3;
+}
+.vSticky {
+	position: -webkit-sticky;
+	position: sticky;
+	top: 50px;;
+	z-index: 2;
+}
+.hSticky {
+	position: -webkit-sticky;
+	position: sticky;
+	left: 0;
+	z-index: 1;
+}
+.column1 {
+	width: 90px;
+}
+.column2 {
+	width: 130px;
+	left: 109px;
+}
+table img {
+	object-fit: contain;
+	height: 146.2px;
+	border: none;
+	border-radius: 0;
+	margin-bottom: 0;
+	vertical-align: bottom;
+	width: 100%;
+}
+.normalCell {
+	width: 260px;
 }
 .emptyCell {
 	background-color: rgba(0, 0, 0, 0.15);
 	color: rgba(0, 0, 0, 0.5);
-}
-blockquote {
-	color: #666666;
-	border-left: 4px solid #c3c3c3;
-	padding: 0.5em 0 0.5em 1em;
-	margin-bottom: 1em;
-}
-blockquote > *:last-child {
-	margin-bottom: 0;
-}
-pre {
-	margin-bottom: 1em;
-}
-code {
-	font-family: monospace;
-	font-size: 0.8rem;
-	border-radius: 5px;
 }
 p {
 	margin-bottom: 1.5em;
@@ -168,48 +154,15 @@ p {
 p + p {
 	margin-top: 1.5em;
 }
-li {
-	padding-left: 1.45em;
-	text-indent: -1.45em;
-	margin: 1em 0;
-	line-height: 1.8em;
-}
-h4 + * {
-	margin-top: 1em;
-}
-section ul li:before,
-article ul li:before {
-	content: "　";
-	background: no-repeat url(/images/list-style.svg) center/75%;
-	opacity: 0.4;
-	margin:auto 0.15em auto 0.3em;
-}
-section ol li,
-article ol li {
-	list-style: decimal;
-	list-style-position: inside;
-	margin-left: 1em;
-}
-li ul,
-li ol {
-	margin: 0 0 0.5em 1em;
-}
-ul.article-list > li {
-	margin-bottom: 1em;
-}
-img,
-video {
-	width: 100%;
-	border: 1px solid #d3d3d3;
-	border-radius: 5px;
-	margin-bottom: 1em;
-}
 a {
 	color: #22ace8;
 	font-weight: bold;
 }
 a:hover {
 	color: #b4d8e8;
+}
+.bold {
+	font-weight: bold;
 }
 .button {
 	display: inline-flex;
@@ -223,40 +176,6 @@ a:hover {
 	font-size: 0.9rem;
 	font-family: -apple-system, BlinkMacSystemFont, "UD新ゴ R"; /*新ゴだけだと Safari で崩れる*/
 }
-b,
-strong {
-	font-weight: bold;
-}
-small {
-	font-size: 0.8em;
-}
-del {
-	text-decoration: line-through;
-}
-.twitter-tweet {
-	padding-bottom: 1em!important;
-}
-.twitter-video {
-	min-width: 100%!important;
-}
-iframe[src^="https://www.youtube.com/"] {
-	width:100%;
-	height:56.25vw;
-	margin-bottom: 1em;
-}
-iframe[src^="https://www.facebook.com/"][src-="video"] {
-	height: 28px!important;
-}
-iframe {
-	width: 100%;
-	height:56.25vw;
-}
-iframe + h4:before {
-	display: inline-block;
-	content: "　";
-	margin: 1em 0 0 -1em;
-}
-
 /*ナビゲーション*/
 header {
 	position: fixed;
@@ -327,110 +246,6 @@ header span {
 	font-weight: bold;
 	font-size: 2em;
 }
-h1 {
-	margin: 0 2em 0 1em;
-	font-weight: bold;
-	flex: none; /*0 0 auto*/
-	font-size: 1em;
-}
-h1 a {
-	color: #dadada;
-}
-header ul {
-	display: flex;
-	flex-wrap: wrap;
-	margin-bottom: 0;
-}
-header ul a {
-	color: #dadada;
-	padding: 0 1em;
-	display: flex;
-	align-items: center;
-	min-height: 50px;
-	transition: .25s;
-	font-weight: normal;
-}
-header ul a:hover {
-	color: #22ace8;
-	background-color: rgba(255, 255, 255, 0.15);
-}
-.nav-dropdown {
-	display: none;
-}
-nav li {
-	margin-bottom: 0;
-	padding-left: 0;
-	text-indent: 0;
-	margin: 0;
-}
-.share-buttons {
-	text-align: center;
-	margin: 20px auto;
-}
-.share-buttons > a {
-	display: inline-block;
-	margin: 0.5em;
-	padding: 10px 10px 10px 2.6em;
-	background-position: 10px;
-	background-size: 1.5em;
-	background-repeat: no-repeat;
-	border-radius: 4px;
-	color: white;
-	font-weight: bold;
-	font-size: 0.8em;
-}
-#twitter-button {
-	background-color: #1DA1F2;
-	background-image: url(/images/Twitter.svg);
-}
-#twitter-button:hover {
-	background-color: #0c7abf;
-}
-#facebook-button {
-	background-color: #4267b2;
-	background-image: url(/images/Facebook.svg);
-}
-#facebook-button:hover {
-	background-color: #365899;
-}
-#line-button {
-	background-color: #00C300;
-	background-image: url(/images/LINE.svg);
-}
-#line-button:hover {
-	background-color: #02a52f;
-}
-.fb-comments {
-	display: block!important;
-	margin: 2em 0;
-}
-/*ブログ用*/
-.blog-dates {
-	text-align: right;
-}
-.blog-dates:before {
-	content: "　";
-	background: no-repeat url(/images/calendar.svg) center/90%;
-	margin:auto 0.15em auto 0.3em;
-}
-
-/*画像のキャプション用*/
-figure {
-	position: relative;
-}
-figcaption {
-	color: rgba(255, 255, 255, 0.7);
-	position: absolute;
-	bottom: 2em;
-	left: 1em;
-}
-figcaption.bg {
-	background-color: rgba(0, 0, 0, 0.4);
-	margin-bottom: 0.2em;
-	padding: 0.5em 1em;
-	border-radius: 5px;
-}
-
 /*チェックボックス*/
 input[type=checkbox] {
 	display: none;
@@ -484,9 +299,6 @@ select:focus {
 	p {
 		line-height: 1.8em;
 	}
-	.recent-articles p {
-		font-size: 1.2em;
-	}
 }
 
 @media screen and (max-width:550px) {
@@ -500,107 +312,16 @@ select:focus {
 }
 
 @media screen and (max-width:760px) {
-	h3 {
-		margin-top: 1.5em;
-	}
-	body > section,
-	body > article {
-		margin:0 10px 1em;
-		padding: 10px 10px 0;
-	}
-	body > footer {
-		margin:0 20px;
-	}
-	body > footer > .about {
-		padding: 10px;
-	}
-	body > .multi-column {
-		margin:0 10px 1em;
-		padding: 0 10px;
-	}
-	.multi-column > section:not(:last-child) {
-		margin-bottom: 2em;
-	}
-	section > *:last-child {
-		margin-bottom: 0;
-	}
 	/*ナビゲーション*/
 	header {
 		height: 50px;
 		align-items: flex-start;
 		line-height: 50px;
 	}
-	header ul li {
-		flex-basis : 100%;
-	}
-	nav {
-		visibility: hidden;
-	}
-	nav ul li a {
-		color: transparent;
-		
-	}
-	.nav-dropdown {
-		display: block;
-		background: no-repeat url(/images/down-arrow.svg) center/contain;
-		width:50px;
-		height: 50px;
-		flex: none;
-	}
-	h3 + .multi-column > *:first-child > *:first-child {
-		margin-top: auto;
-	}
 }
 @media screen and (min-width:761px) {
 	p {
 		line-height: 2em;
-	}
-	h3 {
-		margin-top: 2em;
-	}
-	nav {
-		line-height: 50px; /*IE11のメニュー上下中央寄せ*/
-	}
-	h3 + .multi-column > * > *:first-child {
-		margin-top: auto;
-	}
-	body > section,
-	body > article,
-	body > footer,
-	body > .multi-column {
-		max-width: 800px;
-		margin: 0 auto;
-		padding: 0 10px;
-	}
-	body > footer > .about {
-		max-width: 775px;
-		padding: 1em 10px;
-	}
-	.multi-column {
-		display: flex;
-	}
-	.multi-column > * {
-		flex: 1 1 400px; /*数値指定によって均等に割るためであって400pxに意味はない。*/
-		margin: 0 10px 1em;
-		align-self: flex-start;
-		width: 1%;
-	}
-	.multi-column > *:first-child {
-		margin-left: 0;
-	}
-	.multi-column > *:last-child {
-		margin-right: 0;
-	}
-	.halfWidthOnPC {
-		width:50%;
-		margin: 1em auto;
-		display:block;
-	}
-	.twitter-tweet {
-		max-width: calc(760px / 2)!important;
-	}
-	.mobileOnly {
-		display: none;
 	}
 }
 
@@ -622,7 +343,13 @@ select:focus {
 	body, .hSticky, tr, th, td, .options, .button, input[type=text] {
 		background-color: #1f1f1f;
 		color: #cccccc;
-		border-color: #6c6c6c!important;
+		border-color: #6c6c6c;
+	}
+	th, td {
+		border-right: 2px solid #6c6c6c;
+	}
+	th:first-child, td:first-child {
+		border-left: 2px solid #6c6c6c;
 	}
 	.button {
 		background-color: #2b6dbc;

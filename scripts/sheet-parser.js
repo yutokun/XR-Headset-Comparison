@@ -82,16 +82,11 @@ function LoadAndParseSheet() {
 
 				//スタイルを設定
 				if (j === 0) {
-					cell.style.width = "90px";
-					cell.style.fontWeight = "bold";
-					cell.className = "hSticky";
+					cell.className = "hSticky column1 bold";
 				} else if (j == 1) {
-					cell.style.width = "130px";
-					cell.style.fontWeight = "bold";
-					cell.className = "hSticky";
-					cell.style.left = "109px";
+					cell.className = "hSticky column2 bold";
 				} else {
-					cell.style.width = "260px";
+					cell.className = "normalCell";
 				}
 
 				//タグを設定
