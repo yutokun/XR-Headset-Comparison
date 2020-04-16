@@ -125,12 +125,14 @@ table img {
 	position: sticky;
 	top: 50px;
 	z-index: 2;
+	background-color: white;
 }
 .hSticky {
 	position: -webkit-sticky;
 	position: sticky;
 	left: 0;
 	z-index: 1;
+	background-color: white;
 }
 .column1 {
 	width: 90px;
