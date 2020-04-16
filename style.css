@@ -175,6 +175,9 @@ a:hover {
 	font-size: 0.9rem;
 	font-family: -apple-system, BlinkMacSystemFont, "UD新ゴ R"; /*新ゴだけだと Safari で崩れる*/
 }
+.button:hover {
+	color: white;
+}
 /*ナビゲーション*/
 header {
 	position: fixed;
@@ -353,6 +356,9 @@ select:focus {
 	.button {
 		background-color: #2b6dbc;
 		color: #dddddd;
+	}
+	.button:hover {
+		color:#dddddd;
 	}
 	a {
 		color: #259ed3;
