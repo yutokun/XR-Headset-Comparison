@@ -76,8 +76,7 @@ function LoadAndParseSheet() {
 					// 改行
 					cell.innerText = cellData.replace(/\\n/g, "\n");
 					if (cellData.startsWith("-") || cellData.startsWith("?")) {
-						cell.style.backgroundColor = "rgba(0, 0, 0, 0.15)";
-						cell.style.color = "rgba(0, 0, 0, 0.5)";
+						cell.className = "emptyCell";
 					}
 				}
 

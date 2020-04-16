@@ -140,6 +140,10 @@ th, td {
 	padding: 0.5em;
 	line-height: 1.5em;
 }
+.emptyCell {
+	background-color: rgba(0, 0, 0, 0.15);
+	color: rgba(0, 0, 0, 0.5);
+}
 blockquote {
 	color: #666666;
 	border-left: 4px solid #c3c3c3;
@@ -611,5 +615,34 @@ select:focus {
 		left: auto;
 		right: 1em;
 		transform: translateX(0);
+	}
+}
+
+@media (prefers-color-scheme: dark) {
+	body, .hSticky, tr, th, td, .options, .button, input[type=text] {
+		background-color: #1f1f1f;
+		color: #cccccc;
+		border-color: #6c6c6c!important;
+	}
+	.button {
+		background-color: #2b6dbc;
+		color: #dddddd;
+	}
+	a {
+		color: #259ed3;
+	}
+	a:hover {
+		color: #1b749b;
+	}
+	.emptyCell {
+		background-color: #151515;
+		color: #9b9b9b;
+	}
+	.toggle-button span > div {
+		background-image: url(/images/unchecked-dark.svg);
+	}
+
+	.toggle-button :checked + span > div {
+		background-image: url(/images/checked-dark.svg);
 	}
 }
