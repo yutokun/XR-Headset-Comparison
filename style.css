@@ -111,6 +111,15 @@ th, td {
 th:first-child, td:first-child {
 	border-left: 2px solid #c3c3c3;
 }
+table img {
+	object-fit: contain;
+	height: 146.2px;
+	border: none;
+	border-radius: 0;
+	margin-bottom: 0;
+	vertical-align: bottom;
+	width: 100%;
+}
 .vSticky {
 	position: -webkit-sticky;
 	position: sticky;
@@ -129,15 +138,6 @@ th:first-child, td:first-child {
 .column2 {
 	width: 130px;
 	left: 109px;
-}
-table img {
-	object-fit: contain;
-	height: 146.2px;
-	border: none;
-	border-radius: 0;
-	margin-bottom: 0;
-	vertical-align: bottom;
-	width: 100%;
 }
 .normalCell {
 	width: 260px;
