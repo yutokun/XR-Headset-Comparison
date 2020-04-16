@@ -89,7 +89,7 @@ function LoadAndParseSheet() {
 					cell.style.width = "130px";
 					cell.style.fontWeight = "bold";
 					cell.className = "hSticky";
-					cell.style.left = "108px";
+					cell.style.left = "109px";
 				} else {
 					cell.style.width = "260px";
 				}
