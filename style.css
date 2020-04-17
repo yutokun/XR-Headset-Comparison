@@ -229,6 +229,14 @@ header span {
 	background-color: white;
 	z-index: 4;
 	font-weight: bold;
+	scrollbar-color: #c3c3c3 white; /*Firefox 用*/
+	scrollbar-width: thin; /*Firefox 用*/
+}
+.options::-webkit-scrollbar {
+	width: 10px;
+}
+.options::-webkit-scrollbar-thumb {
+	background-color: #c3c3c3;
 }
 .options-background{
 	display: none;
@@ -392,5 +400,11 @@ select:focus {
 
 	.toggle-button :checked + span > div {
 		background-image: url(/images/checked-dark.svg);
+	}
+	.options {
+		scrollbar-color: #6c6c6c #1f1f1f; /*Firefox 用*/
+	}
+	.options::-webkit-scrollbar-thumb {
+		background-color: #6c6c6c;
 	}
 }
