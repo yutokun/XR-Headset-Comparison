@@ -363,9 +363,13 @@ select:focus {
 		right: 1em;
 		transform: translateX(0);
 	}
+	.vSticky {
+		position: relative;
+		top:50px;
+	}
 }
 
-@media (prefers-color-scheme: dark) {
+@media screen and (prefers-color-scheme: dark) {
 	body, .hSticky, tr, th, td, .options, .button, input[type=text] {
 		background-color: #1f1f1f;
 		color: #cccccc;
