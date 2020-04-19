@@ -108,7 +108,6 @@ function LoadAndParseSheet() {
 //確実に表がロードされた後に処理するため、
 //LoadAndParseSheet から呼んでいる。
 function Initialize() {
-	LoadTypeSquare();
 	SetAutomaticRepaint();
 	GetQueriesAndFilter();
 	document.getElementById("loadingMessage").style.display = "none";
@@ -242,16 +241,6 @@ function ForceRepaint() {
 		/*jshint ignore:end*/
 		elems[i].style.display = "";
 	}
-}
-
-function LoadTypeSquare(){
-	if (navigator.platform.includes("Mac") || navigator.platform.includes("iP")) return;
-	let typeSquare = document.createElement("script");
-	typeSquare.setAttribute("type", "text/javascript");
-	typeSquare.setAttribute("src", "//typesquare.com/3/tsst/script/ja/typesquare.js?5e6f8bc85f0443c886cc1ec4ac1e0217");
-	typeSquare.setAttribute("charset", "utf-8");
-	let head = document.getElementsByTagName("head");
-	head[0].appendChild(typeSquare);
 }
 
 //Safari でスクロール時に強制リペイント
