@@ -5,20 +5,20 @@ let selling = false;
 
 function OnLoad(sheetPath) {
 	var xhr = new XMLHttpRequest();
-	xhr.addEventListener("load", () => ParseSheet(xhr));
+	xhr.addEventListener("load", () => ParseSheet(xhr.responseText));
 	xhr.open("get", sheetPath);
 	xhr.setRequestHeader('Pragma', 'no-cache');
 	xhr.setRequestHeader('Cache-Control', 'no-cache');
 	xhr.send();
 }
 
-function ParseSheet(xhr) {
+function ParseSheet(sheetText) {
 	//TSV読み込み完了時の処理
 	//テーブルの作成
 	var thead = table.appendChild(document.createElement("thead"));
 	thead.className = "vSticky";
 	var tbody = table.appendChild(document.createElement("tbody"));
-	let columns = xhr.responseText.split("\n");
+	let columns = sheetText.split("\n");
 	columns.pop();
 	let rowLength = columns[0].split("\t").length;
 
