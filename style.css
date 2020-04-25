@@ -202,7 +202,7 @@ header span {
 	left: 50%;
 	transform: translateX(-50%);
 	font-weight: normal;
-	font-family: -apple-system, BlinkMacSystemFont;
+	font-family: -apple-system, BlinkMacSystemFont, 'Kosugi';
 }
 #optionButton {
 	display: flex;
