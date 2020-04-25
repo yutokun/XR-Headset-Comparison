@@ -24,14 +24,14 @@ function ParseSheet(sheetText) {
 
 	//二次元配列っぽいものの初期化
 	let sheet = [];
-	for(let i = 0; i < rowLength; i++){
+	for (let i = 0; i < rowLength; i++) {
 		sheet[i] = new Array(columns.length).fill();
 	}
 
 	//転置された配列作成
-	for(let i = 0; i < columns.length; i++){
+	for (let i = 0; i < columns.length; i++) {
 		let row = columns[i].split("\t");
-		for(let j = 0; j < rowLength; j++){
+		for (let j = 0; j < rowLength; j++) {
 			sheet[j][i] = row[j];
 		}
 	}
@@ -70,7 +70,7 @@ function ParseSheet(sheetText) {
 			} else {
 				// 税込み価格計算
 				// TODO 消費税率の変動に対応
-				cellData = cellData.replace(/\\ct{(\d.+?)}/g, (all, num)=>{
+				cellData = cellData.replace(/\\ct{(\d.+?)}/g, (all, num) => {
 					let price = Number(num) * 1.1; // 税率
 					price = Math.floor(price);
 					return price.toLocaleString();
@@ -108,7 +108,8 @@ function ParseSheet(sheetText) {
 function Initialize() {
 	SetAutomaticRepaint();
 	GetQueriesAndFilter();
-	document.getElementById("loadingMessage").style.display = "none";
+	var loadingMessage = document.getElementById("loadingMessage");
+	if (loadingMessage) loadingMessage.style.display = "none";
 }
 
 function ApplyFilters() {
@@ -132,19 +133,19 @@ function ApplyFilters() {
 
 //フィルタの準備
 let inputBox = document.getElementById("textFilter");
-inputBox.addEventListener("input", ApplyFilters);
+inputBox?.addEventListener("input", ApplyFilters);
 
 //テキストでフィルタ
 function FilterText(rowTitle, searchText) {
 	let reg = new RegExp(searchText, "i");
 	let rows = document.getElementsByTagName("tr");
 	for (currentRow of rows) {
-		if (currentRow.innerText.startsWith(rowTitle)){
+		if (currentRow.innerText.startsWith(rowTitle)) {
 			var row = currentRow;
 			break;
 		}
 	}
-	
+
 	let searchTargets = row.children;
 	for (let i = 2; i < searchTargets.length; i++) {
 		if (searchTargets[i].innerText.match(reg) == null) {
@@ -179,7 +180,7 @@ function ShowAll() {
 
 	//検索用配列をクリアする
 	queries.length = 0;
-	inputBox.value = "";
+	if (inputBox) inputBox.value = "";
 
 	//ステータステキストを更新
 	UpdateStatus();
@@ -217,12 +218,14 @@ function UpdateStatus() {
 
 	let statusElem = document.getElementById("status");
 
-	if (count === 0) {
-		statusElem.innerHTML = "条件に合うヘッドセットが見つかりませんでした";
-	} else if (count == list.length - 2) {
-		statusElem.innerHTML = "全てを表示中（" + (list.length - 2) + "件）";
-	} else {
-		statusElem.innerHTML = count + "件マッチしました";
+	if (statusElem) {
+		if (count === 0) {
+			statusElem.innerHTML = "条件に合うヘッドセットが見つかりませんでした";
+		} else if (count == list.length - 2) {
+			statusElem.innerHTML = "全てを表示中（" + (list.length - 2) + "件）";
+		} else {
+			statusElem.innerHTML = count + "件マッチしました";
+		}
 	}
 
 	ForceRepaint();
@@ -246,7 +249,7 @@ function SetAutomaticRepaint() {
 	let ua = window.navigator.userAgent;
 	let isSafari = ua.includes("Safari") && (ua.includes("Chrome") === false);
 	if (isSafari) {
-			let timeout;
+		let timeout;
 		window.addEventListener("scroll", function () {
 			clearTimeout(timeout);
 			timeout = setTimeout(ForceRepaint, 50);
@@ -269,14 +272,14 @@ function GetQueriesAndFilter() {
 				checkbox.checked = true;
 			}
 		}
-		
+
 		// 販売状況の再現
 		selling = q.s == "true" ? true : false;
 		document.querySelector("#sellingInJapan").checked = selling;
-		
+
 		// 製品名検索の再現
 		inputBox.value = q.t ? decodeURI(q.t) : "";
-		
+
 		ApplyFilters();
 	} else {
 		//Firefox で前回のチェック状態のみが残ってしまう問題の対策
@@ -289,11 +292,11 @@ function GetQueriesAndFilter() {
 function SetQueries() {
 	let refines = queries.toString() ? "r=" + queries.toString() : "";
 	let sell = selling ? "s=true" : "";
-	let text = inputBox.value ? "t=" + inputBox.value : "";
+	let text = inputBox?.value ? "t=" + inputBox.value : "";
 	let query = "?";
 	if (text) query += text;
 	if (sell) query += (text ? "&" : "") + sell;
-	if (refines) query += (text||selling ? "&" : "") + refines;
+	if (refines) query += (text || selling ? "&" : "") + refines;
 	query = encodeURI(query);
 	history.replaceState(null, null, query);
 }

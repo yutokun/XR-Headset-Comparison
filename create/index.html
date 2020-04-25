@@ -1,0 +1,467 @@
+<!DOCTYPE html>
+<html lang="ja">
+
+<head>
+	<meta charset="UTF-8">
+	<title>データ作成</title>
+	<link rel="stylesheet" href="/style.css?ver=5">
+	<style>
+		label {
+			display: inline-block;
+			width: 10em;
+			font-weight: bold;
+		}
+		
+		form > div {
+			margin-bottom: 1em;
+			display: flex;
+			align-items: center;
+		}
+		
+		.toggle-button > label {
+			width: auto;
+		}
+		
+		p {
+			margin: 1em 0 0 0;
+			font-weight: bold;
+		}
+		.columns {
+			display: flex;
+			justify-content: flex-start;
+			width: 1420px;
+			margin: 0 auto;
+		}
+	</style>
+</head>
+
+<body>
+	<header>
+		<span id="title">比較表用データ作成</span>
+	</header>
+	<div class="columns">
+		<section>
+			<section style="padding-top: 70px;" id="inputs">
+				<form name="inputs" action="">
+					<div>
+						<label for="title">製品名</label>
+						<input type="text" name="title">
+					</div>
+					<div>
+						<label for="queries">検索クエリ</label>
+						
+						<div>
+							<p>XR タイプ</p>
+							<div class="toggle-button">
+								<label>
+									<input type="checkbox" onclick="generate();" data-query="virtual">
+									<span class="button"><div></div>VR</span>
+								</label>
+								<label>
+									<input type="checkbox" onclick="generate();" data-query="augmented">
+									<span class="button"><div></div>AR</span>
+								</label>
+								<label>
+									<input type="checkbox" onclick="generate();" data-query="smartglass">
+									<span class="button"><div></div>スマートグラス</span>
+								</label>
+							</div>
+			
+							<p>ソフトウェアプラットフォーム</p>
+							<div class="toggle-button">
+								<label>
+									<input type="checkbox" onclick="generate();" data-query="oculus">
+									<span class="button"><div></div>Oculus</span>
+								</label>
+								<label>
+									<input type="checkbox" onclick="generate();" data-query="steam">
+									<span class="button"><div></div>SteamVR</span>
+								</label>
+								<label>
+									<input type="checkbox" onclick="generate();" data-query="winmr">
+									<span class="button"><div></div>Windows MR</span>
+								</label>
+								<label>
+									<input type="checkbox" onclick="generate();" data-query="psvr">
+									<span class="button"><div></div>PlayStation VR</span>
+								</label>
+								<label>
+									<input type="checkbox" onclick="generate();" data-query="daydream">
+									<span class="button"><div></div>Daydream</span>
+								</label>
+								<label>
+									<input type="checkbox" onclick="generate();" data-query="pico">
+									<span class="button"><div></div>Pico</span>
+								</label>
+							</div>
+			
+							<p>フォームファクタ</p>
+							<div class="toggle-button">
+								<label>
+									<input type="checkbox" onclick="generate();" data-query="pc">
+									<span class="button"><div></div>PC</span>
+								</label>
+								<label>
+									<input type="checkbox" onclick="generate();" data-query="mobile">
+									<span class="button"><div></div>モバイル</span>
+								</label>
+								<label>
+									<input type="checkbox" onclick="generate();" data-query="standalone">
+									<span class="button"><div></div>スタンドアロン</span>
+								</label>
+								<label>
+									<input type="checkbox" onclick="generate();" data-query="smartphone">
+									<span class="button"><div></div>スマートフォン</span>
+								</label>
+								<label>
+									<input type="checkbox" onclick="generate();" data-query="console">
+									<span class="button"><div></div>コンソール</span>
+								</label>
+							</div>
+			
+							<p>ヘッドトラッキング</p>
+							<div class="toggle-button">
+								<label>
+									<input type="checkbox" onclick="generate();" data-query="head6DoF">
+									<span class="button"><div></div>6DoF</span>
+								</label>
+								<label>
+									<input type="checkbox" onclick="generate();" data-query="head3DoF">
+									<span class="button"><div></div>3DoF</span>
+								</label>
+							</div>
+			
+							<p>ハンドトラッキング</p>
+							<div class="toggle-button">
+								<label>
+									<input type="checkbox" onclick="generate();" data-query="bothhands6DoF">
+									<span class="button"><div></div>両手6DoF</span>
+								</label>
+								<label>
+									<input type="checkbox" onclick="generate();" data-query="onehand6DoF">
+									<span class="button"><div></div>片手6DoF</span>
+								</label>
+								<label>
+									<input type="checkbox" onclick="generate();" data-query="onehand3DoF">
+									<span class="button"><div></div>片手3DoF</span>
+								</label>
+							</div>
+			
+							<p>トラッキングのタイプ（6DoF ヘッドセットのみ）</p>
+							<div class="toggle-button">
+								<label>
+									<input type="checkbox" onclick="generate();" data-query="withSensor">
+									<span class="button"><div></div>外部センサーを利用</span>
+								</label>
+								<label>
+									<input type="checkbox" onclick="generate();" data-query="withoutSensor">
+									<span class="button"><div></div>内部センサーで処理</span>
+								</label>
+							</div>
+						</div>
+					</div>
+			
+					<div>
+						<label for="image">画像ファイル名</label>
+						<input type="text" name="image" placeholder="Oculus Rift CV1.png">
+					</div>
+					<div>
+						<label for="type">タイプ</label>
+						<select name="type" id="">
+							<option value="PC">PC</option>
+							<option value="スタンドアロン">スタンドアロン</option>
+							<option value="モバイル">モバイル</option>
+							<option value="コンソール">コンソール</option>
+							<option value="スマホ（高）">スマホ（高）</option>
+							<option value="PC、スタンドアロン両用">PC、スタンドアロン両用</option>
+							<option value="HDMI 入力">HDMI 入力</option>
+						</select>
+					</div>
+					  <div>
+						<label for="description">所感</label>
+						<textarea name="description" id="" cols="30" rows="10"></textarea>
+					</div>
+					<div>
+						<label for="platform">プラットフォーム</label>
+						<textarea name="platform" id="" cols="30" rows="5" placeholder="Oculus"></textarea>
+					</div>
+					<div>
+						<label for="head">ヘッドトラッキング</label>
+						<input type="text" name="head" placeholder="6DoF（Constellation）">
+					</div>
+					<div>
+						<label for="hand">ハンドトラッキング</label>
+						<input type="text" name="hand" placeholder="両手6DoF">
+					</div>
+					<div>
+						<label for="trackingArea">トラッキングエリア</label>
+						<textarea name="trackingArea" id="" cols="30" rows="3" placeholder="最大1.5m四方（2センサー）"></textarea>
+					</div>
+					<div>
+						<label for="comfortability">快適さ</label>
+						<select name="comfortability" id="">
+							<option value="◎">◎</option>
+							<option value="◯">◯</option>
+							<option value="△">△</option>
+							<option value="😱">😱</option>
+							<option value="筆者未体験">筆者未体験</option>
+						</select>
+					</div>
+					<div>
+						<label for="input">入力方法</label>
+						<textarea name="input" id="" cols="30" rows="5" placeholder="Oculus Touch"></textarea>
+					</div>
+					<div>
+						<label for="processor">プロセッサ</label>
+						<input type="text" name="processor" placeholder="PC依存">
+					</div>
+					<div>
+						<label for="storage">内臓ストレージ</label>
+						<textarea name="storage" id="" cols="30" rows="3" placeholder="64GB"></textarea>
+					</div>
+					<div>
+						<label for="ipd">IPD</label>
+						<input type="text" name="ipd" placeholder="59 - 70mm, 固定など">
+					</div>
+					<div>
+						<label for="visionAcuityAdjustment">視度調整</label>
+						<input type="text" name="visionAcuityAdjustment">
+					</div>
+					<div>
+						<label for="display">ディスプレイ</label>
+						<input type="text" name="horizontalPixelCount" placeholder="2160" style="width: 50px;">
+						&nbsp;×&nbsp;
+						<input type="text" name="verticalPixelCount" placeholder="1200" style="width: 50px;">
+						&nbsp;@&nbsp;
+						<input type="text" name="refreshRate" placeholder="90" style="width: 50px;">
+						&nbsp;fps
+					</div>
+					<div>
+						<label for="fov">視野角</label>
+						<input type="text" name="fov" placeholder="110">
+						&nbsp;度
+					</div>
+					<div>
+						<label for="headphone">ヘッドフォン</label>
+						<input type="text" name="headphone" placeholder="ヘッドフォン備え付け">
+					</div>
+					<div>
+						<label for="microphone">マイク</label>
+						<input type="text" name="microphone" placeholder="マイク内蔵">
+					</div>
+					<div>
+						<label for="headphonePlug">ヘッドフォン端子</label>
+						<input type="text" name="headphonePlug" placeholder="ヘッドフォン端子なし">
+					</div>
+					<div>
+						<label for="salesStatus">海外販売状況</label>
+						<select name="salesStatus" id="">
+							<option value="◯">◯</option>
+							<option value="◯（○年後半）">◯（○年後半）</option>
+							<option value="△">△</option>
+							<option value="△（○年後半）">△（○年後半）</option>
+							<option value="×">×</option>
+							<option value="販売終了">販売終了</option>
+							<option value="販売終了（○年○月〇日）">販売終了（○年○月〇日）</option>
+							<option value="発売中止">発売中止</option>
+							<option value="開発中">開発中</option>
+						</select>
+					</div>
+					<div>
+						<label for="salesStatusJP">国内販売状況</label>
+						<select name="salesStatusJP" id="">
+							<option value="◯">◯</option>
+							<option value="◯（○年後半）">◯（○年後半）</option>
+							<option value="△">△</option>
+							<option value="△（○年後半）">△（○年後半）</option>
+							<option value="×">×</option>
+							<option value="販売終了">販売終了</option>
+							<option value="販売終了（○年○月〇日）">販売終了（○年○月〇日）</option>
+							<option value="発売中止">発売中止</option>
+							<option value="開発中">開発中</option>
+						</select>
+					</div>
+					<div>
+						<label for="priceInUSD">米ドル（税込み）</label>
+						<textarea name="priceInUSD" id="" cols="30" rows="3" placeholder="$399"></textarea>
+					</div>
+					<div>
+						<label for="priceInJPY">日本円（税込み）</label>
+						<textarea name="priceInJPY" id="" cols="30" rows="3" placeholder="¥50,000 or ¥\ct{49800}"></textarea>
+					</div>
+					<div>
+						<label for="ageLimitation">年齢制限の概要</label>
+						<textarea name="ageLimitation" id="" cols="30" rows="10"></textarea>
+					</div>
+					<div>
+						<label for="link1-name">年齢制限の情報源</label>
+						<div>
+							<input type="text" name="ageLimitationName" placeholder="">
+							<input type="text" name="ageLimitationUrl" placeholder="https://">
+						</div>
+					</div>
+					<div>
+						<label for="link1-name">リンク1</label>
+						<div>
+							<input type="text" name="link1Name" placeholder="公式サイト">
+							<input type="text" name="link1Url" placeholder="https://">
+						</div>
+					</div>
+					<div>
+						<label for="link2Name">リンク2</label>
+						<div>
+							<input type="text" name="link2Name" placeholder="Mogura VR さんの記事">
+							<input type="text" name="link2Url" placeholder="https://">
+						</div>
+					</div>
+					<div>
+						<label for="link3Name">リンク3</label>
+						<div>
+							<input type="text" name="link3Name" placeholder="PANORA さんの記事">
+							<input type="text" name="link3Url" placeholder="https://">
+						</div>
+					</div>
+				</form>
+			</section>
+			<section>
+				<form name="result">
+					<div>
+						<label for="result">Result</label>
+						<textarea name="result" id="result" cols="30" rows="30"></textarea>
+					</div>
+				</form>
+			</section>
+		</section>
+		<section>
+			<table id="preview"></table>
+		</section>
+	</div>
+	<script>
+		let inputs = document.querySelectorAll("input[type=text],textarea,select");
+		for (prop of inputs) prop.addEventListener("input", generateAndReload);
+		var data;
+		generate();
+		
+		function generateAndReload() {
+			generate();
+			SendSheet(data);
+			let old = document.getElementById("preview");
+			while (old.lastChild) old.removeChild(old.lastChild);
+			ReloadSheet();
+		}
+		
+		function generate() {
+			let form = document.forms.inputs;
+			data = "";
+			addLine(form.title.value);
+			addLine(getQueries());
+			addLine("\image{/images/headsets/" + encodeURIComponent(form.image.value) + "}");
+			addLine(form.type.value);
+			addLine(form.description.value);
+			addLine(form.platform.value);
+			addLine(form.head.value);
+			addLine(form.hand.value);
+			addLine(form.trackingArea.value);
+			addLine(form.comfortability.value);
+			addLine(form.input.value);
+			addLine(form.processor.value);
+			addLine(form.storage.value);
+			addLine(form.ipd.value);
+			addLine(form.visionAcuityAdjustment.value);
+			addLine(getDensityText());
+			addLine(getDisplayText());
+			addLine(getFovText());
+			addLine(form.headphone.value);
+			addLine(form.microphone.value);
+			addLine(form.headphonePlug.value);
+			addLine(form.salesStatus.value);
+			addLine(form.salesStatusJP.value);
+			addLine(form.priceInUSD.value);
+			addLine(form.priceInJPY.value);
+			addLine(form.ageLimitation.value);
+			addLine("\link{" + form.ageLimitationName.value + "," + form.ageLimitationUrl.value + "}");
+			addLine("\link{" + form.link1Name.value + "," + form.link1Url.value + "}");
+			addLine("\link{" + form.link2Name.value + "," + form.link2Url.value + "}");
+			addLine("\link{" + form.link3Name.value + "," + form.link3Url.value + "}");
+			
+			data = data.slice(0, -1);
+			document.forms.result.result.textContent = data;
+		}
+		
+		function addLine(text) {
+			if(text == "") {
+				data += "-\t";
+			} else {
+				text = text.replace(/\n/g, "\\n")
+				data += text + "\t";
+			}
+		}
+		
+		function getQueries() {
+			let text = "";
+			let queries = document.querySelectorAll(".toggle-button>label");
+			for (item of queries) {
+				let checkbox = item.querySelector("input[type=checkbox]");
+				if (checkbox.checked) {
+					text += checkbox.getAttribute("data-query") + " ";
+				}
+			}
+			return text;
+		}
+		
+		function getDensityText() {
+			// 左右の辺を2乗したものを足して、その平方根を視野角で割る
+			let form = document.forms.inputs;
+			let horizontal = form.horizontalPixelCount.value;
+			let vertical = form.verticalPixelCount.value;
+			let fov = form.fov.value;
+			
+			let density = Math.sqrt(horizontal ** 2 + vertical ** 2) / fov;
+			
+			if (isNaN(density) || density == Infinity) return "-";
+			
+			return density.toFixed(2) + "px";
+		}
+		
+		function getDisplayText() {
+			let form = document.forms.inputs;
+			let horizontal = form.horizontalPixelCount.value;
+			let vertical = form.verticalPixelCount.value;
+			let fps = form.refreshRate.value;
+			
+			let result = "";
+			if (isNumber(horizontal) && isNumber(vertical)) result += horizontal + " × " + vertical;
+			if (isNumber(fps)) {
+				if (result != "") result += " @ ";
+				result += fps + "fps";
+			}
+			return result;
+		}
+		
+		function getFovText() {
+			let form = document.forms.inputs;
+			let fov = form.fov.value;
+			return fov != "" ? fov + "度" : "-";
+		}
+		
+		function isNumber(candidate) {
+			return !isNaN(candidate) && candidate != undefined && candidate != "";
+		}
+		
+		function ReloadSheet() {
+			OnLoad("/create/temp.tsv");
+		}
+		
+		function SendSheet(sheetText) {
+			let form = new FormData();
+			form.append('sheet', sheetText);
+			let request = new XMLHttpRequest();
+			request.open('POST', 'write-temp-file.php');
+			request.send(form);
+			request.abort();
+		}
+	</script>
+	<script src="/scripts/sheet-parser.js?v=1"></script>
+</body>
+
+</html>
