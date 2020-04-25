@@ -3,106 +3,104 @@ let allCells = [];
 let queries = [];
 let selling = false;
 
-window.onload = function () {
-	LoadAndParseSheet();
-};
-
-function LoadAndParseSheet() {
+function OnLoad(sheetPath) {
 	var xhr = new XMLHttpRequest();
-	xhr.addEventListener("load", function () {
-		//TSV読み込み完了時の処理
-		//テーブルの作成
-		var thead = table.appendChild(document.createElement("thead"));
-		thead.className = "vSticky";
-		var tbody = table.appendChild(document.createElement("tbody"));
-		let columns = xhr.responseText.split("\n");
-		columns.pop();
-		let rowLength = columns[0].split("\t").length;
-
-		//二次元配列っぽいものの初期化
-		let sheet = [];
-		for(let i = 0; i < rowLength; i++){
-			sheet[i] = new Array(columns.length).fill();
-		}
-
-		//転置された配列作成
-		for(let i = 0; i < columns.length; i++){
-			let row = columns[i].split("\t");
-			for(let j = 0; j < rowLength; j++){
-				sheet[j][i] = row[j];
-			}
-		}
-
-		for (var i = 0; i < rowLength; i++) {
-			//行要素の作成
-			let rowFrom = i < 3 ? thead : tbody;
-			let row = rowFrom.appendChild(document.createElement("tr"));
-
-			for (var j = 0; j < sheet[i].length; j++) {
-				//セル要素を作成
-				let cell;
-				if (i === 0) {
-					cell = row.appendChild(document.createElement("th"));
-				} else if (i == 1) {
-					row.remove();
-					continue;
-				} else {
-					cell = row.appendChild(document.createElement("td"));
-				}
-				let cellData = sheet[i][j];
-
-				//タグとテキストを構築
-				if (cellData.includes("\\image")) {
-					let img = cell.appendChild(document.createElement("img"));
-					let path = cellData.match(/\\image{(.+?)}/)[1];
-					img.setAttribute("src", path);
-				} else if (cellData.includes("\\link")) {
-					// リンク
-					// TODO 複数リンク・任意の位置への対応
-					let linkData = cellData.match(/\\link{(.+?),(.+?)}/);
-					let a = cell.appendChild(document.createElement("a"));
-					a.innerText = linkData[1];
-					a.setAttribute("href", linkData[2]);
-					a.setAttribute("target", "_blank");
-				} else {
-					// 税込み価格計算
-					// TODO 消費税率の変動に対応
-					cellData = cellData.replace(/\\ct{(\d.+?)}/g, (all, num)=>{
-						let price = Number(num) * 1.1; // 税率
-						price = Math.floor(price);
-						return price.toLocaleString();
-					});
-					
-					// 改行
-					cell.innerText = cellData.replace(/\\n/g, "\n");
-					if (cellData.startsWith("-") || cellData.startsWith("?")) {
-						cell.className = "emptyCell";
-					}
-				}
-
-				//スタイルを設定
-				if (j === 0) {
-					cell.className = "hSticky column1 bold";
-				} else if (j == 1) {
-					cell.className = "hSticky column2 bold";
-				} else {
-					cell.className = "normalCell";
-				}
-
-				//タグを設定
-				cell.setAttribute("data-tag", sheet[1][j]);
-
-				//フィルタの準備
-				if (j > 1)
-					allCells.push(cell);
-			}
-		}
-		Initialize();
-	});
-	xhr.open("get", "headset.tsv");
+	xhr.addEventListener("load", () => ParseSheet(xhr));
+	xhr.open("get", sheetPath);
 	xhr.setRequestHeader('Pragma', 'no-cache');
 	xhr.setRequestHeader('Cache-Control', 'no-cache');
 	xhr.send();
+}
+
+function ParseSheet(xhr) {
+	//TSV読み込み完了時の処理
+	//テーブルの作成
+	var thead = table.appendChild(document.createElement("thead"));
+	thead.className = "vSticky";
+	var tbody = table.appendChild(document.createElement("tbody"));
+	let columns = xhr.responseText.split("\n");
+	columns.pop();
+	let rowLength = columns[0].split("\t").length;
+
+	//二次元配列っぽいものの初期化
+	let sheet = [];
+	for(let i = 0; i < rowLength; i++){
+		sheet[i] = new Array(columns.length).fill();
+	}
+
+	//転置された配列作成
+	for(let i = 0; i < columns.length; i++){
+		let row = columns[i].split("\t");
+		for(let j = 0; j < rowLength; j++){
+			sheet[j][i] = row[j];
+		}
+	}
+
+	for (var i = 0; i < rowLength; i++) {
+		//行要素の作成
+		let rowFrom = i < 3 ? thead : tbody;
+		let row = rowFrom.appendChild(document.createElement("tr"));
+
+		for (var j = 0; j < sheet[i].length; j++) {
+			//セル要素を作成
+			let cell;
+			if (i === 0) {
+				cell = row.appendChild(document.createElement("th"));
+			} else if (i == 1) {
+				row.remove();
+				continue;
+			} else {
+				cell = row.appendChild(document.createElement("td"));
+			}
+			let cellData = sheet[i][j];
+
+			//タグとテキストを構築
+			if (cellData.includes("\\image")) {
+				let img = cell.appendChild(document.createElement("img"));
+				let path = cellData.match(/\\image{(.+?)}/)[1];
+				img.setAttribute("src", path);
+			} else if (cellData.includes("\\link")) {
+				// リンク
+				// TODO 複数リンク・任意の位置への対応
+				let linkData = cellData.match(/\\link{(.+?),(.+?)}/);
+				let a = cell.appendChild(document.createElement("a"));
+				a.innerText = linkData[1];
+				a.setAttribute("href", linkData[2]);
+				a.setAttribute("target", "_blank");
+			} else {
+				// 税込み価格計算
+				// TODO 消費税率の変動に対応
+				cellData = cellData.replace(/\\ct{(\d.+?)}/g, (all, num)=>{
+					let price = Number(num) * 1.1; // 税率
+					price = Math.floor(price);
+					return price.toLocaleString();
+				});
+
+				// 改行
+				cell.innerText = cellData.replace(/\\n/g, "\n");
+				if (cellData.startsWith("-") || cellData.startsWith("?")) {
+					cell.className = "emptyCell";
+				}
+			}
+
+			//スタイルを設定
+			if (j === 0) {
+				cell.className = "hSticky column1 bold";
+			} else if (j == 1) {
+				cell.className = "hSticky column2 bold";
+			} else {
+				cell.className = "normalCell";
+			}
+
+			//タグを設定
+			cell.setAttribute("data-tag", sheet[1][j]);
+
+			//フィルタの準備
+			if (j > 1)
+				allCells.push(cell);
+		}
+	}
+	Initialize();
 }
 
 //確実に表がロードされた後に処理するため、

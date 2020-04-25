@@ -176,6 +176,10 @@
 		if (userAgent.indexOf('msie') != -1 || userAgent.indexOf('trident') != -1) {
 			document.getElementById("IEAlert").style.display = "block";
 		}
+
+		window.onload = function () {
+			OnLoad("headset.tsv");
+		};
 	</script>
 	<script src="/scripts/sheet-parser.js?v=19"></script>
 	<script src="/scripts/initializer.js?v=5"></script>
