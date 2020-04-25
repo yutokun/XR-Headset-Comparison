@@ -370,7 +370,7 @@ select:focus {
 }
 
 @media screen and (prefers-color-scheme: dark) {
-	body, .hSticky, tr, th, td, .options, .button, input[type=text] {
+	body, .hSticky, tr, th, td, .options, .button, input[type=text], textarea, select {
 		background-color: #1f1f1f;
 		color: #cccccc;
 		border-color: #6c6c6c;
