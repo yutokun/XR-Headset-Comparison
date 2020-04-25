@@ -64,8 +64,10 @@ function ParseSheet(sheetText) {
 				// TODO 複数リンク・任意の位置への対応
 				let linkData = cellData.match(/\\link{(.+?),(.+?)}/);
 				let a = cell.appendChild(document.createElement("a"));
-				a.innerText = linkData[1];
-				a.setAttribute("href", linkData[2]);
+				if (linkData) {
+					a.innerText = linkData[1];
+					a.setAttribute("href", linkData[2]);
+				}
 				a.setAttribute("target", "_blank");
 			} else {
 				// 税込み価格計算
