@@ -11,34 +11,35 @@
 			width: 10em;
 			font-weight: bold;
 		}
-		
-		form > div {
+
+		form>div {
 			margin-bottom: 1em;
 			display: flex;
 			align-items: center;
 		}
-		
-		.toggle-button > label {
+
+		.toggle-button>label {
 			width: auto;
 		}
-		
+
 		p {
 			margin: 1em 0 0 0;
 			font-weight: bold;
 		}
+
 		.columns {
 			display: flex;
 			justify-content: flex-start;
 			width: 1420px;
 			margin: 0 auto;
 		}
+
 	</style>
 </head>
 
 <body>
 	<header>
 		<span id="title">比較表用データ作成</span>
-		<button class="button" onclick="generateAndReload()" style="left: 50%; transform: translateX(-50%);">表を強制リロード</button>
 	</header>
 	<div class="columns">
 		<section>
@@ -50,118 +51,160 @@
 					</div>
 					<div>
 						<label for="queries">検索クエリ</label>
-						
+
 						<div>
 							<p>XR タイプ</p>
 							<div class="toggle-button">
 								<label>
 									<input type="checkbox" onclick="generate();" data-query="virtual">
-									<span class="button"><div></div>VR</span>
+									<span class="button">
+										<div></div>VR
+									</span>
 								</label>
 								<label>
 									<input type="checkbox" onclick="generate();" data-query="augmented">
-									<span class="button"><div></div>AR</span>
+									<span class="button">
+										<div></div>AR
+									</span>
 								</label>
 								<label>
 									<input type="checkbox" onclick="generate();" data-query="smartglass">
-									<span class="button"><div></div>スマートグラス</span>
+									<span class="button">
+										<div></div>スマートグラス
+									</span>
 								</label>
 							</div>
-			
+
 							<p>ソフトウェアプラットフォーム</p>
 							<div class="toggle-button">
 								<label>
 									<input type="checkbox" onclick="generate();" data-query="oculus">
-									<span class="button"><div></div>Oculus</span>
+									<span class="button">
+										<div></div>Oculus
+									</span>
 								</label>
 								<label>
 									<input type="checkbox" onclick="generate();" data-query="steam">
-									<span class="button"><div></div>SteamVR</span>
+									<span class="button">
+										<div></div>SteamVR
+									</span>
 								</label>
 								<label>
 									<input type="checkbox" onclick="generate();" data-query="winmr">
-									<span class="button"><div></div>Windows MR</span>
+									<span class="button">
+										<div></div>Windows MR
+									</span>
 								</label>
 								<label>
 									<input type="checkbox" onclick="generate();" data-query="psvr">
-									<span class="button"><div></div>PlayStation VR</span>
+									<span class="button">
+										<div></div>PlayStation VR
+									</span>
 								</label>
 								<label>
 									<input type="checkbox" onclick="generate();" data-query="daydream">
-									<span class="button"><div></div>Daydream</span>
+									<span class="button">
+										<div></div>Daydream
+									</span>
 								</label>
 								<label>
 									<input type="checkbox" onclick="generate();" data-query="pico">
-									<span class="button"><div></div>Pico</span>
+									<span class="button">
+										<div></div>Pico
+									</span>
 								</label>
 							</div>
-			
+
 							<p>フォームファクタ</p>
 							<div class="toggle-button">
 								<label>
 									<input type="checkbox" onclick="generate();" data-query="pc">
-									<span class="button"><div></div>PC</span>
+									<span class="button">
+										<div></div>PC
+									</span>
 								</label>
 								<label>
 									<input type="checkbox" onclick="generate();" data-query="mobile">
-									<span class="button"><div></div>モバイル</span>
+									<span class="button">
+										<div></div>モバイル
+									</span>
 								</label>
 								<label>
 									<input type="checkbox" onclick="generate();" data-query="standalone">
-									<span class="button"><div></div>スタンドアロン</span>
+									<span class="button">
+										<div></div>スタンドアロン
+									</span>
 								</label>
 								<label>
 									<input type="checkbox" onclick="generate();" data-query="smartphone">
-									<span class="button"><div></div>スマートフォン</span>
+									<span class="button">
+										<div></div>スマートフォン
+									</span>
 								</label>
 								<label>
 									<input type="checkbox" onclick="generate();" data-query="console">
-									<span class="button"><div></div>コンソール</span>
+									<span class="button">
+										<div></div>コンソール
+									</span>
 								</label>
 							</div>
-			
+
 							<p>ヘッドトラッキング</p>
 							<div class="toggle-button">
 								<label>
 									<input type="checkbox" onclick="generate();" data-query="head6DoF">
-									<span class="button"><div></div>6DoF</span>
+									<span class="button">
+										<div></div>6DoF
+									</span>
 								</label>
 								<label>
 									<input type="checkbox" onclick="generate();" data-query="head3DoF">
-									<span class="button"><div></div>3DoF</span>
+									<span class="button">
+										<div></div>3DoF
+									</span>
 								</label>
 							</div>
-			
+
 							<p>ハンドトラッキング</p>
 							<div class="toggle-button">
 								<label>
 									<input type="checkbox" onclick="generate();" data-query="bothhands6DoF">
-									<span class="button"><div></div>両手6DoF</span>
+									<span class="button">
+										<div></div>両手6DoF
+									</span>
 								</label>
 								<label>
 									<input type="checkbox" onclick="generate();" data-query="onehand6DoF">
-									<span class="button"><div></div>片手6DoF</span>
+									<span class="button">
+										<div></div>片手6DoF
+									</span>
 								</label>
 								<label>
 									<input type="checkbox" onclick="generate();" data-query="onehand3DoF">
-									<span class="button"><div></div>片手3DoF</span>
+									<span class="button">
+										<div></div>片手3DoF
+									</span>
 								</label>
 							</div>
-			
+
 							<p>トラッキングのタイプ（6DoF ヘッドセットのみ）</p>
 							<div class="toggle-button">
 								<label>
 									<input type="checkbox" onclick="generate();" data-query="withSensor">
-									<span class="button"><div></div>外部センサーを利用</span>
+									<span class="button">
+										<div></div>外部センサーを利用
+									</span>
 								</label>
 								<label>
 									<input type="checkbox" onclick="generate();" data-query="withoutSensor">
-									<span class="button"><div></div>内部センサーで処理</span>
+									<span class="button">
+										<div></div>内部センサーで処理
+									</span>
 								</label>
 							</div>
 						</div>
 					</div>
-			
+
 					<div>
 						<label for="image">画像ファイル名</label>
 						<input type="text" name="image" placeholder="Oculus Rift CV1.png">
@@ -178,7 +221,7 @@
 							<option value="HDMI 入力">HDMI 入力</option>
 						</select>
 					</div>
-					  <div>
+					<div>
 						<label for="description">所感</label>
 						<textarea name="description" id="" cols="30" rows="10"></textarea>
 					</div>
@@ -337,20 +380,21 @@
 			<table id="preview"></table>
 		</section>
 	</div>
+	<script src="/scripts/sheet-parser.js?v=2"></script>
 	<script>
 		let inputs = document.querySelectorAll("input[type=text],textarea,select");
 		for (prop of inputs) prop.addEventListener("input", generateAndReload);
-		var data;
+		let data;
 		generate();
-		
+		reloadSheet();
+
 		function generateAndReload() {
 			generate();
-			SendSheet(data);
 			let old = document.getElementById("preview");
 			while (old.lastChild) old.removeChild(old.lastChild);
-			ReloadSheet();
+			reloadSheet();
 		}
-		
+
 		function generate() {
 			let form = document.forms.inputs;
 			data = "";
@@ -384,20 +428,20 @@
 			addLine("\\link{" + form.link1Name.value + "," + form.link1Url.value + "}");
 			addLine("\\link{" + form.link2Name.value + "," + form.link2Url.value + "}");
 			addLine("\\link{" + form.link3Name.value + "," + form.link3Url.value + "}");
-			
+
 			data = data.slice(0, -1);
 			document.forms.result.result.textContent = data;
 		}
-		
+
 		function addLine(text) {
-			if(text == "") {
+			if (text == "") {
 				data += "-\t";
 			} else {
 				text = text.replace(/\n/g, "\\n")
 				data += text + "\t";
 			}
 		}
-		
+
 		function getQueries() {
 			let text = "";
 			let queries = document.querySelectorAll(".toggle-button>label");
@@ -409,27 +453,27 @@
 			}
 			return text;
 		}
-		
+
 		function getDensityText() {
 			// 左右の辺を2乗したものを足して、その平方根を視野角で割る
 			let form = document.forms.inputs;
 			let horizontal = form.horizontalPixelCount.value;
 			let vertical = form.verticalPixelCount.value;
 			let fov = form.fov.value;
-			
+
 			let density = Math.sqrt(horizontal ** 2 + vertical ** 2) / fov;
-			
+
 			if (isNaN(density) || density == Infinity) return "-";
-			
+
 			return density.toFixed(2) + "px";
 		}
-		
+
 		function getDisplayText() {
 			let form = document.forms.inputs;
 			let horizontal = form.horizontalPixelCount.value;
 			let vertical = form.verticalPixelCount.value;
 			let fps = form.refreshRate.value;
-			
+
 			let result = "";
 			if (isNumber(horizontal) && isNumber(vertical)) result += horizontal + " × " + vertical;
 			if (isNumber(fps)) {
@@ -438,31 +482,22 @@
 			}
 			return result;
 		}
-		
+
 		function getFovText() {
 			let form = document.forms.inputs;
 			let fov = form.fov.value;
 			return fov != "" ? fov + "度" : "-";
 		}
-		
+
 		function isNumber(candidate) {
 			return !isNaN(candidate) && candidate != undefined && candidate != "";
 		}
-		
-		function ReloadSheet() {
-			OnLoad("/create/temp.tsv");
-		}
-		
-		function SendSheet(sheetText) {
-			let form = new FormData();
-			form.append('sheet', sheetText);
-			let request = new XMLHttpRequest();
-			request.open('POST', 'write-temp-file.php');
-			request.send(form);
-			request.abort();
+
+		function reloadSheet() {
+			let sheet = "\t\t概要\t\t\tソフトウェア\tトラッキング\t\t\t\t入力\t基礎能力\t\tレンズ\t\tビジュアル\t\t\tオーディオ\t\t\t発売状況\t\t価格※込み込み\t\tメーカー推奨年齢\t\t参考情報\t\t\n製品名\ttag\t写真\tタイプ\t所感\tプラットフォーム\tヘッドトラッキング\tハンドトラッキング\tエリア\t快適さ（トラッキングの完成度）\t入力\tプロセッサ\t内蔵ストレージ\tIPD\t視度調節\t画素密度（斜辺のピクセル数を視野角で割った値。参考に留めて下さい。）\tディスプレイ\t視野角\tヘッドフォン\tマイク\tヘッドフォン端子\t海外\t日本国内\t海外価格（税込み）断りがなければ米ドル\t国内価格（税込）\t概要と抜粋\t情報源\tリンク1\tリンク2\tリンク3\n" + data + "\n";
+			ParseSheet(sheet);
 		}
 	</script>
-	<script src="/scripts/sheet-parser.js?v=2"></script>
 </body>
 
 </html>

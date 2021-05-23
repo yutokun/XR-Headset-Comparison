@@ -171,6 +171,7 @@ function FilterCheckbox() {
 
 function ShowAll() {
 	//全てのボタンを unchecked にする
+	if (location.href.includes("create")) return;
 	for (let checkbox of document.querySelectorAll("input[type=checkbox]")) {
 		checkbox.checked = false;
 	}
