@@ -476,10 +476,8 @@
 
 			let result = "";
 			if (isNumber(horizontal) && isNumber(vertical)) result += horizontal + " × " + vertical;
-			if (isNumber(fps)) {
-				if (result != "") result += " @ ";
-				result += fps + "fps";
-			}
+			if (result != "") result += " @ ";
+			result += fps + "fps";
 			return result;
 		}
 
