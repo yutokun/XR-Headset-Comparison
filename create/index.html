@@ -418,10 +418,10 @@
 			addLine(form.priceInUSD.value);
 			addLine(form.priceInJPY.value);
 			addLine(form.ageLimitation.value);
-			addLine(form.ageLimitationName.value && form.ageLimitationUrl.value ? `\\link{${form.ageLimitationName.value},${form.ageLimitationUrl.value}}` : "");
-			addLine(form.link1Name.value && form.link1Url.value ? `\\link{${form.link1Name.value},${form.link1Url.value}}` : "");
-			addLine(form.link2Name.value && form.link2Url.value ? `\\link{${form.link2Name.value},${form.link2Url.value}}` : "");
-			addLine(form.link3Name.value && form.link3Url.value ? `\\link{${form.link3Name.value},${form.link3Url.value}}` : "");
+			addLine(form.ageLimitationName.value && form.ageLimitationUrl.value ? `\\link{${form.ageLimitationName.value},${form.ageLimitationUrl.value}}` : "-");
+			addLine(form.link1Name.value && form.link1Url.value ? `\\link{${form.link1Name.value},${form.link1Url.value}}` : "-");
+			addLine(form.link2Name.value && form.link2Url.value ? `\\link{${form.link2Name.value},${form.link2Url.value}}` : "-");
+			addLine(form.link3Name.value && form.link3Url.value ? `\\link{${form.link3Name.value},${form.link3Url.value}}` : "-");
 
 			data = data.slice(0, -1);
 			document.forms.result.result.textContent = data;
