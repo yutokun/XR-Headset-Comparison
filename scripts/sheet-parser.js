@@ -300,6 +300,7 @@ function SetQueries() {
 	if (text) query += text;
 	if (sell) query += (text ? "&" : "") + sell;
 	if (refines) query += (text || selling ? "&" : "") + refines;
+	if (query == "?") query = location.pathname;
 	query = encodeURI(query);
 	history.replaceState(null, null, query);
 }
