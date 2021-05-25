@@ -237,14 +237,9 @@ function UpdateStatus() {
 
 //強制リペイント（Safari 対策）
 function ForceRepaint() {
-	let elems = document.getElementsByTagName("tr");
-	for (let i = 0; i < 2; i++) {
-		elems[i].style.display = "none";
-		/*jshint ignore:start*/
-		elems[i].offsetHeight;
-		/*jshint ignore:end*/
-		elems[i].style.display = "";
-	}
+	let table = document.getElementsByTagName("table")[0];
+	table.classList.add("safari-repaint");
+	setTimeout(() => table.classList.remove("safari-repaint"), 100);
 }
 
 //Safari でスクロール時に強制リペイント

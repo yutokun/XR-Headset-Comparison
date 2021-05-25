@@ -412,3 +412,16 @@ select:focus {
 		background-color: #6c6c6c;
 	}
 }
+
+.safari-repaint {
+	animation: repaint 1ms;
+}
+
+@keyframes repaint {
+	from {
+		width: 99.999%
+	}
+	to {
+		width: 100%
+	}
+}
