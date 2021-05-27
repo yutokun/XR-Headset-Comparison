@@ -1,23 +1,19 @@
 "use strict";
 var _a;
-//最新の CSS で上書き
 const style = document.createElement("link");
 style.setAttribute("rel", "stylesheet");
 style.setAttribute("href", "/style.css?" + Date.now());
 find("head").appendChild(style);
-//モバイル Chrome のタブ色を変更する
 const tabColor = document.createElement("meta");
 tabColor.name = "theme-color";
 tabColor.content = "black";
 document.head.appendChild(tabColor);
-//外部リンクに target="_blank" を自動で付加
 const aTags = findAll("a");
 for (let aTag of aTags) {
     if (((_a = aTag.getAttribute("href")) === null || _a === void 0 ? void 0 : _a.match(/http/)) != null) {
         aTag.setAttribute("target", "_blank");
     }
 }
-//ボタンのアニメーション
 function createButton(el) {
     function over() {
         let isModifiedSize = !(el.style.transform == "scale(1)" || el.style.transform == "");
@@ -47,16 +43,13 @@ function createButton(el) {
     el.addEventListener('touchstart', over);
     el.addEventListener('touchend', leave);
 }
-//アニメーションをボタンにセット
 const buttons = findAll(".button");
 for (let item of buttons) {
     createButton(item);
 }
-//フィルタ画面の準備
 const optionsBackground = findAll(".options-background")[0];
 const optionButton = find("#optionButton");
 const textFilter = find("#textFilter");
-//フィルタボタンをクリッカブルに
 optionButton.addEventListener("click", () => {
     if (optionsBackground.style.display == "block") {
         closeFilterDialog();
@@ -65,11 +58,9 @@ optionButton.addEventListener("click", () => {
         openFilterDialog();
     }
 }, false);
-//フィルタ背景をクリッカブルに
 optionsBackground.addEventListener("click", () => {
     closeFilterDialog();
 }, false);
-//誤ってフィルタが閉じてしまうことを防ぐために、フィルタ画面から背景へのイベント伝播を停止
 find(".options").addEventListener("click", (e) => {
     e.stopPropagation();
 });
@@ -83,7 +74,6 @@ function closeFilterDialog() {
     optionsBackground.style.display = "none";
     optionButton.style.color = "";
 }
-//ショートカットキー
 document.onkeydown = function (e) {
     if (e.shiftKey && (e.ctrlKey || e.metaKey) && e.keyCode == 70) {
         openFilterDialog();
@@ -113,20 +103,16 @@ window.onload = function () {
     });
 };
 function parse(sheetText) {
-    //TSV読み込み完了時の処理
-    //テーブルの作成
     let thead = table.appendChild(document.createElement("thead"));
     thead.className = "vSticky";
     let tbody = table.appendChild(document.createElement("tbody"));
     let columns = sheetText.split("\n");
     columns.pop();
     let rowLength = columns[0].split("\t").length;
-    //二次元配列っぽいものの初期化
     let sheet = [];
     for (let i = 0; i < rowLength; i++) {
         sheet[i] = new Array(columns.length).fill(undefined);
     }
-    //転置された配列作成
     for (let i = 0; i < columns.length; i++) {
         let row = columns[i].split("\t");
         for (let j = 0; j < rowLength; j++) {
@@ -134,11 +120,9 @@ function parse(sheetText) {
         }
     }
     for (var i = 0; i < rowLength; i++) {
-        //行要素の作成
         let rowFrom = i < 3 ? thead : tbody;
         let row = rowFrom.appendChild(document.createElement("tr"));
         for (var j = 0; j < sheet[i].length; j++) {
-            //セル要素を作成
             let cell;
             if (i === 0) {
                 cell = row.appendChild(document.createElement("th"));
@@ -151,15 +135,12 @@ function parse(sheetText) {
                 cell = row.appendChild(document.createElement("td"));
             }
             let cellData = sheet[i][j];
-            //タグとテキストを構築
             if (cellData.includes("\\image")) {
                 let img = cell.appendChild(document.createElement("img"));
                 let path = cellData.match(/\\image{(.+?)}/)[1];
                 img.setAttribute("src", path);
             }
             else if (cellData.includes("\\link")) {
-                // リンク
-                // TODO 複数リンク・任意の位置への対応
                 let linkData = cellData.match(/\\link{(.+?),(.+?)}/);
                 let a = cell.appendChild(document.createElement("a"));
                 if (linkData) {
@@ -169,20 +150,16 @@ function parse(sheetText) {
                 a.setAttribute("target", "_blank");
             }
             else {
-                // 税込み価格計算
-                // TODO 消費税率の変動に対応
                 cellData = cellData.replace(/\\ct{(\d.+?)}/g, (all, num) => {
-                    let price = Number(num) * 1.1; // 税率
+                    let price = Number(num) * 1.1;
                     price = Math.floor(price);
                     return price.toLocaleString();
                 });
-                // 改行
                 cell.innerText = cellData.replace(/\\n/g, "\n");
                 if (cellData.startsWith("-") || cellData.startsWith("?")) {
                     cell.className = "emptyCell";
                 }
             }
-            //スタイルを設定
             if (j === 0) {
                 cell.className = "hSticky column1 bold";
             }
@@ -192,9 +169,7 @@ function parse(sheetText) {
             else {
                 cell.className = "normalCell";
             }
-            //タグを設定
             cell.setAttribute("data-tag", sheet[1][j]);
-            //フィルタの準備
             if (j > 1)
                 allCells.push(cell);
         }
@@ -238,7 +213,6 @@ function filterByText(rowTitle, searchText) {
         }
     }
 }
-// HTML から呼んでる
 function SetQuickFilter(tagSet) {
     showAll();
     queries.tags = tagSet;
@@ -274,19 +248,16 @@ function applyFilters() {
     for (let cell of allCells) {
         cell.style.display = "";
     }
-    //テーブルのリフローを避けるため一時的に none
     table.style.display = "none";
     filterByTag();
     filterByText("製品名", queries.searchWord);
     filterByText("日本国内", queries.isSelling ? "◯" : "");
-    //まとめてリフロー開始
     table.style.display = "";
     updateStatus();
 }
 function updateStatus() {
-    let count = -2; // 初期値でヘッダを除外しておく
+    let count = -2;
     let list = find("tr").children;
-    //Edge 対策で通常の for
     for (let i = 0; i < list.length; i++) {
         if (list[i].style.display === "")
             ++count;
@@ -306,13 +277,11 @@ function updateStatus() {
     forceRepaint();
     WriteQueries();
 }
-//強制リペイント（Safari 対策）
 function forceRepaint() {
     let table = findAll("table")[0];
     table.classList.add("safari-repaint");
     setTimeout(() => table.classList.remove("safari-repaint"), 100);
 }
-//Safari でスクロール時に強制リペイント
 function setAutomaticRepaint() {
     let ua = window.navigator.userAgent;
     let isSafari = ua.includes("Safari") && !ua.includes("Chrome");
@@ -359,7 +328,6 @@ class Queries {
         let conditions = this.hasConditions ? `r=${this.tags.toString()}` : "";
         let isSelling = this.isSelling ? "s=true" : "";
         let searchWord = this.searchWord ? `t=${this.searchWord}` : "";
-        // TODO NEED REFACTOR
         let queryString = `?${conditions}&${isSelling}&${searchWord}`;
         queryString = queryString.replace(/&+/g, "&");
         queryString = queryString.replace("?&", "?");
