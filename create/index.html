@@ -56,19 +56,19 @@
 							<p>XR タイプ</p>
 							<div class="toggle-button">
 								<label>
-									<input type="checkbox" onclick="generate();" data-query="virtual">
+									<input type="checkbox" onclick="generate();" data-tag="virtual">
 									<span class="button">
 										<div></div>VR
 									</span>
 								</label>
 								<label>
-									<input type="checkbox" onclick="generate();" data-query="augmented">
+									<input type="checkbox" onclick="generate();" data-tag="augmented">
 									<span class="button">
 										<div></div>AR
 									</span>
 								</label>
 								<label>
-									<input type="checkbox" onclick="generate();" data-query="smartglass">
+									<input type="checkbox" onclick="generate();" data-tag="smartglass">
 									<span class="button">
 										<div></div>スマートグラス
 									</span>
@@ -78,37 +78,37 @@
 							<p>ソフトウェアプラットフォーム</p>
 							<div class="toggle-button">
 								<label>
-									<input type="checkbox" onclick="generate();" data-query="oculus">
+									<input type="checkbox" onclick="generate();" data-tag="oculus">
 									<span class="button">
 										<div></div>Oculus
 									</span>
 								</label>
 								<label>
-									<input type="checkbox" onclick="generate();" data-query="steam">
+									<input type="checkbox" onclick="generate();" data-tag="steam">
 									<span class="button">
 										<div></div>SteamVR
 									</span>
 								</label>
 								<label>
-									<input type="checkbox" onclick="generate();" data-query="winmr">
+									<input type="checkbox" onclick="generate();" data-tag="winmr">
 									<span class="button">
 										<div></div>Windows MR
 									</span>
 								</label>
 								<label>
-									<input type="checkbox" onclick="generate();" data-query="psvr">
+									<input type="checkbox" onclick="generate();" data-tag="psvr">
 									<span class="button">
 										<div></div>PlayStation VR
 									</span>
 								</label>
 								<label>
-									<input type="checkbox" onclick="generate();" data-query="daydream">
+									<input type="checkbox" onclick="generate();" data-tag="daydream">
 									<span class="button">
 										<div></div>Daydream
 									</span>
 								</label>
 								<label>
-									<input type="checkbox" onclick="generate();" data-query="pico">
+									<input type="checkbox" onclick="generate();" data-tag="pico">
 									<span class="button">
 										<div></div>Pico
 									</span>
@@ -118,25 +118,25 @@
 							<p>フォームファクタ</p>
 							<div class="toggle-button">
 								<label>
-									<input type="checkbox" onclick="generate();" data-query="pc">
+									<input type="checkbox" onclick="generate();" data-tag="pc">
 									<span class="button">
 										<div></div>PC
 									</span>
 								</label>
 								<label>
-									<input type="checkbox" onclick="generate();" data-query="standalone">
+									<input type="checkbox" onclick="generate();" data-tag="standalone">
 									<span class="button">
 										<div></div>スタンドアロン
 									</span>
 								</label>
 								<label>
-									<input type="checkbox" onclick="generate();" data-query="smartphone">
+									<input type="checkbox" onclick="generate();" data-tag="smartphone">
 									<span class="button">
 										<div></div>スマートフォン
 									</span>
 								</label>
 								<label>
-									<input type="checkbox" onclick="generate();" data-query="console">
+									<input type="checkbox" onclick="generate();" data-tag="console">
 									<span class="button">
 										<div></div>コンソール
 									</span>
@@ -146,13 +146,13 @@
 							<p>ヘッドトラッキング</p>
 							<div class="toggle-button">
 								<label>
-									<input type="checkbox" onclick="generate();" data-query="head6DoF">
+									<input type="checkbox" onclick="generate();" data-tag="head6DoF">
 									<span class="button">
 										<div></div>6DoF
 									</span>
 								</label>
 								<label>
-									<input type="checkbox" onclick="generate();" data-query="head3DoF">
+									<input type="checkbox" onclick="generate();" data-tag="head3DoF">
 									<span class="button">
 										<div></div>3DoF
 									</span>
@@ -162,19 +162,19 @@
 							<p>ハンドトラッキング</p>
 							<div class="toggle-button">
 								<label>
-									<input type="checkbox" onclick="generate();" data-query="bothhands6DoF">
+									<input type="checkbox" onclick="generate();" data-tag="bothhands6DoF">
 									<span class="button">
 										<div></div>両手6DoF
 									</span>
 								</label>
 								<label>
-									<input type="checkbox" onclick="generate();" data-query="onehand6DoF">
+									<input type="checkbox" onclick="generate();" data-tag="onehand6DoF">
 									<span class="button">
 										<div></div>片手6DoF
 									</span>
 								</label>
 								<label>
-									<input type="checkbox" onclick="generate();" data-query="onehand3DoF">
+									<input type="checkbox" onclick="generate();" data-tag="onehand3DoF">
 									<span class="button">
 										<div></div>片手3DoF
 									</span>
@@ -184,13 +184,13 @@
 							<p>トラッキングのタイプ（6DoF ヘッドセットのみ）</p>
 							<div class="toggle-button">
 								<label>
-									<input type="checkbox" onclick="generate();" data-query="withSensor">
+									<input type="checkbox" onclick="generate();" data-tag="withSensor">
 									<span class="button">
 										<div></div>外部センサーを利用
 									</span>
 								</label>
 								<label>
-									<input type="checkbox" onclick="generate();" data-query="withoutSensor">
+									<input type="checkbox" onclick="generate();" data-tag="withoutSensor">
 									<span class="button">
 										<div></div>内部センサーで処理
 									</span>
@@ -442,7 +442,7 @@
 			for (item of queries) {
 				let checkbox = item.querySelector("input[type=checkbox]");
 				if (checkbox.checked) {
-					text += checkbox.getAttribute("data-query") + " ";
+					text += checkbox.getAttribute("data-tag") + " ";
 				}
 			}
 			return text;

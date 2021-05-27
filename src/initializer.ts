@@ -15,7 +15,6 @@ const aTags = findAll<HTMLAnchorElement>("a");
 for (let aTag of aTags) {
 	if (aTag.getAttribute("href")?.match(/http/) != null) {
 		aTag.setAttribute("target", "_blank");
-		console.log(`added to: ${aTag.href}`);
 	}
 }
 
@@ -60,20 +59,20 @@ for (let item of buttons) {
 //フィルタ画面の準備
 const optionsBackground = findAll(".options-background")[0];
 const optionButton = find("#optionButton");
-const textFilter = find("#textFilter");
+const textFilter = find<HTMLInputElement>("#textFilter");
 
 //フィルタボタンをクリッカブルに
 optionButton.addEventListener("click", () => {
 	if (optionsBackground.style.display == "block") {
-		CloseFilters();
+		closeFilterDialog();
 	} else {
-		OpenFilters();
+		openFilterDialog();
 	}
 }, false);
 
 //フィルタ背景をクリッカブルに
 optionsBackground.addEventListener("click", () => {
-	CloseFilters();
+	closeFilterDialog();
 }, false);
 
 //誤ってフィルタが閉じてしまうことを防ぐために、フィルタ画面から背景へのイベント伝播を停止
@@ -81,16 +80,14 @@ find(".options").addEventListener("click", (e) => {
 	e.stopPropagation();
 });
 
-//フィルタ画面を開く
-function OpenFilters() {
+function openFilterDialog() {
 	optionsBackground.style.display = "block";
 	optionButton.style.color = "#22ace8";
 	if (navigator.userAgent.match("Mobile") == null)
 		textFilter.focus();
 }
 
-//フィルタ画面を閉じる
-function CloseFilters() {
+function closeFilterDialog() {
 	optionsBackground.style.display = "none";
 	optionButton.style.color = "";
 }
@@ -98,8 +95,8 @@ function CloseFilters() {
 //ショートカットキー
 document.onkeydown = function (e) {
 	if (e.shiftKey && (e.ctrlKey || e.metaKey) && e.keyCode == 70) {
-		OpenFilters();
+		openFilterDialog();
 	} else if (e.keyCode == 27 || e.keyCode == 13) {
-		CloseFilters();
+		closeFilterDialog();
 	}
 };

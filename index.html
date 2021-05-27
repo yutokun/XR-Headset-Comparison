@@ -34,7 +34,7 @@
 	</header>
 	<div class="options-background">
 		<div class="options">
-			<a href="javascript:ShowAll()" class="button">全て表示</a>
+			<a class="button" id="show-all">全て表示</a>
 
 			<p>製品名で検索</p>
 			<input type="text" id="textFilter" placeholder="例：oculus">
@@ -48,15 +48,15 @@
 			<p>XR タイプで絞り込み</p>
 			<div class="toggle-button">
 				<label>
-					<input type="checkbox" onclick="OnCheck(this);" data-query="virtual">
+					<input type="checkbox" data-tag="virtual">
 					<span class="button"><div></div>VR</span>
 				</label>
 				<label>
-					<input type="checkbox" onclick="OnCheck(this);" data-query="augmented">
+					<input type="checkbox" data-tag="augmented">
 					<span class="button"><div></div>AR</span>
 				</label>
 				<label>
-					<input type="checkbox" onclick="OnCheck(this);" data-query="smartglass">
+					<input type="checkbox" data-tag="smartglass">
 					<span class="button"><div></div>スマートグラス</span>
 				</label>
 			</div>
@@ -64,27 +64,27 @@
 			<p>ソフトウェアプラットフォームで絞り込み</p>
 			<div class="toggle-button">
 				<label>
-					<input type="checkbox" onclick="OnCheck(this);" data-query="oculus">
+					<input type="checkbox" data-tag="oculus">
 					<span class="button"><div></div>Oculus</span>
 				</label>
 				<label>
-					<input type="checkbox" onclick="OnCheck(this);" data-query="steam">
+					<input type="checkbox" data-tag="steam">
 					<span class="button"><div></div>SteamVR</span>
 				</label>
 				<label>
-					<input type="checkbox" onclick="OnCheck(this);" data-query="winmr">
+					<input type="checkbox" data-tag="winmr">
 					<span class="button"><div></div>Windows MR</span>
 				</label>
 				<label>
-					<input type="checkbox" onclick="OnCheck(this);" data-query="psvr">
+					<input type="checkbox" data-tag="psvr">
 					<span class="button"><div></div>PlayStation VR</span>
 				</label>
 				<label>
-					<input type="checkbox" onclick="OnCheck(this);" data-query="daydream">
+					<input type="checkbox" data-tag="daydream">
 					<span class="button"><div></div>Daydream</span>
 				</label>
 				<label>
-					<input type="checkbox" onclick="OnCheck(this);" data-query="pico">
+					<input type="checkbox" data-tag="pico">
 					<span class="button"><div></div>Pico</span>
 				</label>
 			</div>
@@ -92,19 +92,19 @@
 			<p>フォームファクタで絞り込み</p>
 			<div class="toggle-button">
 				<label>
-					<input type="checkbox" onclick="OnCheck(this);" data-query="pc">
+					<input type="checkbox" data-tag="pc">
 					<span class="button"><div></div>PC</span>
 				</label>
 				<label>
-					<input type="checkbox" onclick="OnCheck(this);" data-query="standalone">
+					<input type="checkbox" data-tag="standalone">
 					<span class="button"><div></div>スタンドアロン</span>
 				</label>
 				<label>
-					<input type="checkbox" onclick="OnCheck(this);" data-query="smartphone">
+					<input type="checkbox" data-tag="smartphone">
 					<span class="button"><div></div>スマートフォン</span>
 				</label>
 				<label>
-					<input type="checkbox" onclick="OnCheck(this);" data-query="console">
+					<input type="checkbox" data-tag="console">
 					<span class="button"><div></div>コンソール</span>
 				</label>
 			</div>
@@ -112,11 +112,11 @@
 			<p>ヘッドトラッキングで絞り込み</p>
 			<div class="toggle-button">
 				<label>
-					<input type="checkbox" onclick="OnCheck(this);" data-query="head6DoF">
+					<input type="checkbox" data-tag="head6DoF">
 					<span class="button"><div></div>6DoF</span>
 				</label>
 				<label>
-					<input type="checkbox" onclick="OnCheck(this);" data-query="head3DoF">
+					<input type="checkbox" data-tag="head3DoF">
 					<span class="button"><div></div>3DoF</span>
 				</label>
 			</div>
@@ -124,15 +124,15 @@
 			<p>ハンドトラッキングで絞り込み</p>
 			<div class="toggle-button">
 				<label>
-					<input type="checkbox" onclick="OnCheck(this);" data-query="bothhands6DoF">
+					<input type="checkbox" data-tag="bothhands6DoF">
 					<span class="button"><div></div>両手6DoF</span>
 				</label>
 				<label>
-					<input type="checkbox" onclick="OnCheck(this);" data-query="onehand6DoF">
+					<input type="checkbox" data-tag="onehand6DoF">
 					<span class="button"><div></div>片手6DoF</span>
 				</label>
 				<label>
-					<input type="checkbox" onclick="OnCheck(this);" data-query="onehand3DoF">
+					<input type="checkbox" data-tag="onehand3DoF">
 					<span class="button"><div></div>片手3DoF</span>
 				</label>
 			</div>
@@ -140,11 +140,11 @@
 			<p>トラッキングのタイプで絞り込み（6DoF ヘッドセットのみに絞られます）</p>
 			<div class="toggle-button">
 				<label>
-					<input type="checkbox" onclick="OnCheck(this);" data-query="withSensor">
+					<input type="checkbox" data-tag="withSensor">
 					<span class="button"><div></div>外部センサーを利用</span>
 				</label>
 				<label>
-					<input type="checkbox" onclick="OnCheck(this);" data-query="withoutSensor">
+					<input type="checkbox" data-tag="withoutSensor">
 					<span class="button"><div></div>内蔵センサーで処理</span>
 				</label>
 			</div>
@@ -152,8 +152,8 @@
 			<p>販売状況で絞り込み</p>
 			<div class="toggle-button">
 				<label>
-					<input type="checkbox" onclick="OnCheckTextFilter(this)" id="sellingInJapan">
-					<span class="button"><div></div>日本から購入可能</span>
+					<input type="checkbox" id="sellingInJapan">
+					<span class="button"><div></div>現在、日本から購入可能</span>
 				</label>
 			</div>
 			<p style="text-align: right"><a href="https://github.com/yutokun/XR-Headset-Comparison/blob/master/LICENSE.md">ライセンス情報</a></p>
@@ -171,13 +171,10 @@
 		if (userAgent.indexOf('msie') != -1 || userAgent.indexOf('trident') != -1) {
 			document.getElementById("IEAlert").style.display = "block";
 		}
-
-		window.onload = function () {
-			OnLoad("headset.tsv");
-		};
 	</script>
-	<script src="/scripts/sheet-parser.js?v=24"></script>
-	<script src="/scripts/initializer.js?v=5"></script>
+	<script src="/scripts/util.js?v=1"></script>
+	<script src="/scripts/sheet-parser.js?v=25"></script>
+	<script src="/scripts/initializer.js?v=6"></script>
 </body>
 
 </html>
