@@ -278,6 +278,10 @@ function updateStatus() {
     WriteQueries();
 }
 function forceRepaint() {
+    let ua = window.navigator.userAgent;
+    let isSafari = ua.includes("Safari") && !ua.includes("Chrome");
+    if (!isSafari)
+        return;
     let table = findAll("table")[0];
     table.classList.add("safari-repaint");
     setTimeout(() => table.classList.remove("safari-repaint"), 100);
