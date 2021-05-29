@@ -17,16 +17,10 @@ jobs:
     - name: FTP Deploy
       uses: SamKirkland/FTP-Deploy-Action@4.0.0
       with:
-        # Deployment destination server & path. Formatted as protocol://domain.com:port/full/destination/path/
         server: ${{ secrets.ftp_server }}
-        # FTP account username
+        server-dir: ${{ secrets.ftp_server_dir }}
         username: ${{ secrets.ftp_username }}
-        # FTP account password
         password: ${{ secrets.ftp_password }}
-        # The local folder to copy, defaults to root project folder
-#         local-dir: # optional
-        # Passes through options into git-ftp
-#         git-ftp-args: # optional
         exclude: .github/**/*
           - .gitattributes
           - .gitignore
