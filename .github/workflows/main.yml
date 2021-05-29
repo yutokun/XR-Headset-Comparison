@@ -21,8 +21,8 @@ jobs:
         server-dir: ${{ secrets.ftp_server_dir }}
         username: ${{ secrets.ftp_username }}
         password: ${{ secrets.ftp_password }}
-        exclude: .git/**/* 
-          - .github/**/*
+        exclude: .git/
+          - .github
           - .gitattributes
           - .gitignore
           - .jshintrc
