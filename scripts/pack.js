@@ -289,14 +289,14 @@ function forceRepaint() {
 function setAutomaticRepaint() {
     let ua = window.navigator.userAgent;
     let isSafari = ua.includes("Safari") && !ua.includes("Chrome");
-    if (isSafari) {
-        let timeout;
-        window.addEventListener("scroll", function () {
-            clearTimeout(timeout);
-            timeout = setTimeout(forceRepaint, 50);
-        });
-        console.log("Safari needs to repaint on Scroll");
-    }
+    if (!isSafari)
+        return;
+    let timeout;
+    window.addEventListener("scroll", function () {
+        clearTimeout(timeout);
+        timeout = setTimeout(forceRepaint, 50);
+    });
+    console.log("Safari needs to repaint on Scroll");
 }
 class Queries {
     constructor(query) {
