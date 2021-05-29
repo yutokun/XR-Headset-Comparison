@@ -21,13 +21,15 @@ jobs:
         server-dir: ${{ secrets.ftp_server_dir }}
         username: ${{ secrets.ftp_username }}
         password: ${{ secrets.ftp_password }}
-        exclude: .github/**/*
+        exclude: .git/**/* 
+          - .github/**/*
           - .gitattributes
           - .gitignore
           - .jshintrc
           - *.md
           - *.afdesign
           - tsconfig.json
+          - src/**/*
 
     - name: get commit message
       run: |
