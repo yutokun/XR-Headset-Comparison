@@ -104,7 +104,7 @@ td.hSticky {
 th, td {
 	display: flex;
 	align-items: center;
-	padding: 0.5em;
+	padding: 8px;
 	line-height: 1.5em;
 	border-right: 2px solid #c3c3c3;
 }
@@ -113,7 +113,7 @@ th:first-child, td:first-child {
 }
 table img {
 	object-fit: contain;
-	height: 146.2px;
+	height: 150px;
 	border: none;
 	border-radius: 0;
 	margin-bottom: 0;
@@ -142,7 +142,7 @@ table img {
 	left: 109px;
 }
 .normalCell {
-	width: 260px;
+	width: 266px;
 }
 .emptyCell {
 	background-color: rgba(0, 0, 0, 0.15);
