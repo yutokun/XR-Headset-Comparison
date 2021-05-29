@@ -22,6 +22,7 @@ jobs:
         username: ${{ secrets.ftp_username }}
         password: ${{ secrets.ftp_password }}
         exclude: .git/**/*
+          - .github/**/*
           - .gitattributes
           - .gitignore
           - .jshintrc
