@@ -15,18 +15,25 @@ jobs:
         fetch-depth: 2
 
     - name: FTP Deploy
-      uses: SamKirkland/FTP-Deploy-Action@3.0.0
+      uses: SamKirkland/FTP-Deploy-Action@4.0.0
       with:
         # Deployment destination server & path. Formatted as protocol://domain.com:port/full/destination/path/
-        ftp-server: ${{ secrets.ftp_server }}
+        server: ${{ secrets.ftp_server }}
         # FTP account username
-        ftp-username: ${{ secrets.ftp_username }}
+        username: ${{ secrets.ftp_username }}
         # FTP account password
-        ftp-password: ${{ secrets.ftp_password }}
+        password: ${{ secrets.ftp_password }}
         # The local folder to copy, defaults to root project folder
 #         local-dir: # optional
         # Passes through options into git-ftp
 #         git-ftp-args: # optional
+        exclude: .github/**/*
+          - .gitattributes
+          - .gitignore
+          - .jshintrc
+          - *.md
+          - *.afdesign
+          - tsconfig.json
 
     - name: get commit message
       run: |
