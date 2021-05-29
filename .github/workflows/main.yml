@@ -27,6 +27,7 @@ jobs:
           - .gitignore
           - .jshintrc
           - *.md
+          - *.afdesign
           - *.afphoto
           - tsconfig.json
           - src/**/*
