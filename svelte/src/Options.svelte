@@ -42,7 +42,7 @@
         };
 
         addBlankToExternalLinks();
-        // filterWindowIsActive.set(false);
+        filterWindowIsActive.set(false);
     });
 
     function onClickBackground() {
