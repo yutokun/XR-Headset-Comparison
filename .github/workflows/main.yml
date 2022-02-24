@@ -33,6 +33,17 @@ jobs:
           - src/**/*
           - svelte/**/*
 
+    - name: Setup Node
+      uses: actions/setup-node@v2
+      with:
+        node-version: '17.4.0'
+
+    - name: FTP Build with Svelte
+      run: |
+        cd ./svelte/
+        npm install
+        npm run build
+
     - name: FTP Deploy Svelte
       uses: SamKirkland/FTP-Deploy-Action@4.0.0
       with:
