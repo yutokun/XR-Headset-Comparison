@@ -25,6 +25,9 @@
 	<title>XR ヘッドセット比較表</title>
 	<meta name="viewport" content="width=device-width,initial-scale=1.0" />
 	<link rel="stylesheet" href="/dark-mode.css" />
+	<link rel="preconnect" href="https://fonts.googleapis.com" />
+	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+	<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@700&display=swap" rel="stylesheet" />
 	<link href="https://fonts.googleapis.com/css2?family=Kosugi&display=swap" rel="stylesheet" />
 	<meta property="og:title" content="XR ヘッドセット比較表" />
 	<meta property="og:description" content="XR ヘッドセットの比較表です。お手軽なフィルタや、製品名でのインクリメンタルサーチに対応しています。" />
