@@ -23,6 +23,7 @@ export async function initializeTable(tableInstance: HTMLElement): Promise<void>
         parse(await data.text());
         addBlankToExternalLinks();
         countActiveHeadset();
+        setAutomaticRepaint();
     });
 
 }
@@ -133,6 +134,7 @@ function countActiveHeadset() {
     }
 
     setCount(innerCount);
+    forceRepaint();
 }
 
 export function showAll(): void {
@@ -190,3 +192,28 @@ function filterByText(rowTitle: string, searchText: string) {
         }
     }
 }
+
+//Safari でスクロール時に強制リペイント
+function setAutomaticRepaint() {
+    let ua = window.navigator.userAgent;
+    let isSafari = ua.includes("Safari") && !ua.includes("Chrome");
+    if (!isSafari) return;
+
+    let timeout: NodeJS.Timeout;
+    window.addEventListener("scroll", function () {
+        clearTimeout(timeout);
+        timeout = setTimeout(forceRepaint, 50);
+    });
+    console.log("Safari needs to repaint on Scroll");
+}
+
+//強制リペイント（Safari 対策）
+function forceRepaint() {
+    let ua = window.navigator.userAgent;
+    let isSafari = ua.includes("Safari") && !ua.includes("Chrome");
+    if (!isSafari) return;
+
+    table.classList.add("safari-repaint");
+    setTimeout(() => table.classList.remove("safari-repaint"), 100);
+}
+
