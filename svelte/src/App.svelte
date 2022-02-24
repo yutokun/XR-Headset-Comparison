@@ -17,8 +17,6 @@
 		tabColor.content = "black";
 		document.head.appendChild(tabColor);
 	});
-
-	// TODO Analytics
 </script>
 
 <svelte:head>
