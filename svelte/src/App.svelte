@@ -1,0 +1,58 @@
+<script lang="ts">
+	import { onMount } from "svelte";
+	import Header from "./Header.svelte";
+	import Options from "./Options.svelte";
+	import Table from "./Table.svelte";
+
+	let loadingMessageStyle: string;
+
+	function onTableLoaded() {
+		loadingMessageStyle = "display: none";
+	}
+
+	onMount(() => {
+		//モバイル Chrome のタブ色を変更する
+		const tabColor = document.createElement("meta");
+		tabColor.name = "theme-color";
+		tabColor.content = "black";
+		document.head.appendChild(tabColor);
+	});
+
+	// TODO Analytics
+</script>
+
+<svelte:head>
+	<title>XR ヘッドセット比較表</title>
+	<meta name="viewport" content="width=device-width,initial-scale=1.0" />
+	<link rel="stylesheet" href="/dark-mode.css" />
+	<link href="https://fonts.googleapis.com/css2?family=Kosugi&display=swap" rel="stylesheet" />
+	<meta property="og:title" content="XR ヘッドセット比較表" />
+	<meta property="og:description" content="XR ヘッドセットの比較表です。お手軽なフィルタや、製品名でのインクリメンタルサーチに対応しています。" />
+	<meta property="og:image" content="https://xr-comparison.yutokun.com/OGP.jpg" />
+	<meta property="og:image:src" content="https://xr-comparison.yutokun.com/OGP.jpg" />
+	<meta name="twitter:card" content="summary_large_image" />
+</svelte:head>
+
+<main>
+	<Header />
+	<div id="loadingMessage" style={loadingMessageStyle}>読み込み中...</div>
+	<Table on:tableLoaded={onTableLoaded} />
+	<Options />
+</main>
+
+<style>
+	#loadingMessage {
+		height: 100vh;
+		display: flex;
+		justify-content: center;
+		align-items: center;
+		font-weight: bold;
+		font-size: 2em;
+	}
+
+	@media print {
+		#loadingMessage {
+			display: none;
+		}
+	}
+</style>

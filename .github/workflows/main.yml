@@ -14,11 +14,30 @@ jobs:
       with:
         fetch-depth: 2
 
-    - name: FTP Deploy
+    - name: FTP Deploy Release
       uses: SamKirkland/FTP-Deploy-Action@4.0.0
       with:
         server: ${{ secrets.ftp_server }}
         server-dir: ${{ secrets.ftp_server_dir }}
+        username: ${{ secrets.ftp_username }}
+        password: ${{ secrets.ftp_password }}
+        exclude: .git/**/*
+          - .github/**/*
+          - .gitattributes
+          - .gitignore
+          - .jshintrc
+          - *.md
+          - *.afdesign
+          - *.afphoto
+          - tsconfig.json
+          - src/**/*
+
+    - name: FTP Deploy Svelte
+      uses: SamKirkland/FTP-Deploy-Action@4.0.0
+      with:
+        server: ${{ secrets.ftp_server }}
+        server-dir: ${{ secrets.svelte_ftp_server_dir }}
+        local-dir: ./svelte/public/
         username: ${{ secrets.ftp_username }}
         password: ${{ secrets.ftp_password }}
         exclude: .git/**/*

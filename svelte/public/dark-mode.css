@@ -1,0 +1,57 @@
+@media screen and (prefers-color-scheme: dark) {
+    body,
+    .hSticky,
+    tr,
+    th,
+    td,
+    .options,
+    .button,
+    button,
+    input[type=text],
+    textarea,
+    select {
+        background-color: #1f1f1f!important;
+        color: #cccccc!important;
+        border-color: #6c6c6c!important;
+    }
+    th,
+    td {
+        border-right: 2px solid #6c6c6c!important;
+    }
+    th:first-child,
+    td:first-child {
+        border-left: 2px solid #6c6c6c!important;
+    }
+    .button,
+    button {
+        background-color: #2b6dbc!important;
+        color: #dddddd!important;
+    }
+    .button:hover,
+    button:hover {
+        color: #dddddd!important;
+    }
+    a {
+        color: #259ed3!important;
+    }
+    a:hover {
+        color: #1b749b!important;
+    }
+    .emptyCell {
+        background-color: #151515!important;
+        color: #9b9b9b!important;
+    }
+    .toggle {
+        background-image: url(./images/unchecked-dark.svg)!important;
+    }
+    .toggle[data-checked] {
+        background-image: url(./images/checked-dark.svg)!important;
+    }
+    .options {
+        scrollbar-color: #6c6c6c #1f1f1f!important;
+        /*Firefox 用*/
+    }
+    .options::-webkit-scrollbar-thumb {
+        background-color: #6c6c6c!important;
+    }
+}

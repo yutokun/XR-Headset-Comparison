@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN" "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
+<svg width="100%" height="100%" viewBox="0 0 256 256" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" xml:space="preserve" xmlns:serif="http://www.serif.com/" style="fill-rule:evenodd;clip-rule:evenodd;stroke-linejoin:round;stroke-miterlimit:1.41421;">
+    <g id="Checkbox-Selected" serif:id="Checkbox Selected">
+        <path id="Base" d="M233,65C233,41.82 214.18,23 191,23L65,23C41.82,23 23,41.82 23,65L23,191C23,214.18 41.82,233 65,233L191,233C214.18,233 233,214.18 233,191L233,65Z" style="fill:rgb(31,31,31);"/>
+        <path id="Checked-Icon" serif:id="Checked Icon" d="M219.631,44.881L89.765,176.005L36.259,121.878C29.794,115.348 19.313,115.348 12.849,121.878C6.384,128.407 6.384,138.999 12.849,145.537L77.715,211.139C81.034,214.488 85.411,216.094 89.765,216.005C94.116,216.094 98.494,214.488 101.814,211.139L243.042,68.531C249.508,61.997 249.508,51.41 243.042,44.881C236.577,38.338 226.097,38.338 219.631,44.881Z" style="fill:rgb(31,31,31);stroke:rgb(132,147,166);stroke-width:14px;"/>
+    </g>
+</svg>

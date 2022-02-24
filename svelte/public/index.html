@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset='utf-8'>
+    <meta name='viewport' content='width=device-width,initial-scale=1'>
+
+    <title>XR ヘッドセット比較表</title>
+
+    <link rel='icon' type='image/png' href='/favicon.png'>
+    <link rel='stylesheet' href='/global.css'>
+    <link rel='stylesheet' href='/build/bundle.css'>
+
+    <script defer src='/build/bundle.js'></script>
+</head>
+
+<body>
+    <div id="IEAlert">
+        <p>
+            残念ながら Internet Explorer では閲覧できません。<br /> 以下からお好みのブラウザを使用してください。
+        </p>
+        <p>
+            <a href="https://vivaldi.com/ja/" target="_blank">Vivaldi</a>
+            <a href="https://www.google.com/chrome/" target="_blank">Chrome</a>
+            <a href="https://www.mozilla.org/ja/" target="_blank">Firefox</a>
+            <a href="https://www.opera.com/ja" target="_blank">Opera</a>
+        </p>
+    </div>
+    <style>
+        #IEAlert {
+            display: none;
+            position: absolute;
+            top: 45%;
+            width: 100%;
+            text-align: center;
+            line-height: 1.5;
+        }
+        
+        #IEAlert a {
+            margin: 0 0.5em;
+        }
+        
+        @media print {
+            #IEAlert {
+                display: none;
+            }
+        }
+    </style>
+    <script>
+        // IE のみメッセージを表示する
+        var userAgent = window.navigator.userAgent.toLowerCase();
+        if (userAgent.indexOf("msie") != -1 || userAgent.indexOf("trident") != -1) {
+            document.getElementById("IEAlert").style.display = "block";
+        }
+    </script>
+</body>
+
+</html>
