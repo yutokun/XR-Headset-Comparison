@@ -19,9 +19,8 @@ jobs:
       with:
         node-version: '17.4.0'
 
-    - name: FTP Build with Svelte
+    - name: Build with Svelte
       run: |
-        cd ./svelte/
         npm install
         npm run build
 
