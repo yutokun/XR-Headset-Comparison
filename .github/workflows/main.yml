@@ -52,20 +52,11 @@ jobs:
         local-dir: ./svelte/public/
         username: ${{ secrets.ftp_username }}
         password: ${{ secrets.ftp_password }}
-        exclude: .git/**/*
-          - .github/**/*
-          - .gitattributes
-          - .gitignore
-          - .jshintrc
-          - *.md
-          - *.afdesign
-          - *.afphoto
-          - tsconfig.json
-          - src/**/*
 
     - name: get commit message
       run: |
          echo "commitmsg=$(git log --format=%B -n 1 ${{ github.event.after }})" >> $GITHUB_ENV
+
     - name: show commit message
       run : echo $commitmsg
 
