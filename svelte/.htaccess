@@ -1,0 +1,5 @@
+<IfModule mod_rewrite.c>
+RewriteEngine on
+RewriteCond %{HTTPS} off
+RewriteRule ^(.*)$ https://svelte.xr-comparison.yutokun.com/$1 [R=301,L]
+</IfModule>
