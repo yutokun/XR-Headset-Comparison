@@ -1,23 +1,33 @@
 <script lang="ts">
 	import { onMount } from "svelte";
+	import Create from "./Create.svelte";
 	import Header from "./Header.svelte";
 	import Options from "./Options.svelte";
 	import Table from "./Table.svelte";
 
 	let loadingMessageStyle: string;
+	let creationMode: boolean;
 
 	function onTableLoaded() {
 		loadingMessageStyle = "display: none";
 	}
 
 	onMount(() => {
-		//モバイル Chrome のタブ色を変更する
+		// モバイル Chrome のタブ色を変更する
 		const tabColor = document.createElement("meta");
 		tabColor.name = "theme-color";
 		tabColor.content = "black";
 		document.head.appendChild(tabColor);
 	});
+
+	function onKeyDown(e) {
+		if (e.shiftKey && (e.ctrlKey || e.metaKey) && e.altKey && e.code === "KeyC") {
+			creationMode = !creationMode;
+		}
+	}
 </script>
+
+<svelte:window on:keydown={onKeyDown} />
 
 <svelte:head>
 	<title>XR ヘッドセット比較表</title>
@@ -35,10 +45,14 @@
 </svelte:head>
 
 <main>
-	<Header />
-	<div id="loadingMessage" style={loadingMessageStyle}>読み込み中...</div>
-	<Table on:tableLoaded={onTableLoaded} />
-	<Options />
+	{#if creationMode}
+		<Create />
+	{:else}
+		<Header />
+		<div id="loadingMessage" style={loadingMessageStyle}>読み込み中...</div>
+		<Table on:tableLoaded={onTableLoaded} />
+		<Options />
+	{/if}
 </main>
 
 <style>

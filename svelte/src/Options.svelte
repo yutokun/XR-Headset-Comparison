@@ -33,14 +33,6 @@
             setButtonAnimation(item);
         }
 
-        document.onkeydown = function (e) {
-            if (e.shiftKey && (e.ctrlKey || e.metaKey) && e.code === "KeyF") {
-                filterWindowIsActive.set(true);
-            } else if (e.code === "Enter" || e.code === "Escape") {
-                filterWindowIsActive.set(false);
-            }
-        };
-
         addBlankToExternalLinks();
         filterWindowIsActive.set(false);
     });
@@ -142,7 +134,17 @@
         el.addEventListener("touchstart", over);
         el.addEventListener("touchend", leave);
     }
+
+    function onKeyDown(e) {
+        if (e.shiftKey && (e.ctrlKey || e.metaKey) && e.code === "KeyF") {
+            filterWindowIsActive.set(true);
+        } else if (e.code === "Enter" || e.code === "Escape") {
+            filterWindowIsActive.set(false);
+        }
+    }
 </script>
+
+<svelte:window on:keydown={onKeyDown} />
 
 <div class="background" on:click={onClickBackground}>
     <div class="options" on:click|stopPropagation>

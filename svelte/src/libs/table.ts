@@ -18,17 +18,18 @@ export async function initializeTable(tableInstance: HTMLElement): Promise<void>
     table = tableInstance;
     table.innerHTML = ""; // TODO 速くできそう
     allCells = [];
+}
 
-    return fetch("headset.tsv").then(async (data) => {
+export async function load(tsvPath: string) {
+    return fetch(tsvPath).then(async (data) => {
         parse(await data.text());
         addBlankToExternalLinks();
         countActiveHeadset();
         setAutomaticRepaint();
     });
-
 }
 
-function parse(sheetText: string) {
+export function parse(sheetText: string) {
     //TSV読み込み完了時の処理
     //テーブルの作成
     let thead = table.appendChild(document.createElement("thead"));

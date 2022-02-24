@@ -1,12 +1,14 @@
 <script lang="ts">
     import { createEventDispatcher, onMount } from "svelte";
-    import { initializeTable } from "./libs/table";
+    import { initializeTable, load } from "./libs/table";
     import { find } from "./libs/util";
 
     const dispatch = createEventDispatcher();
 
     onMount(() => {
-        initializeTable(find("table")).then(() => dispatch("tableLoaded"));
+        initializeTable(find("table"))
+            .then(() => load("headset.tsv"))
+            .then(() => dispatch("tableLoaded"));
     });
 </script>
 
