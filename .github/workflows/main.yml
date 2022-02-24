@@ -31,6 +31,7 @@ jobs:
           - *.afphoto
           - tsconfig.json
           - src/**/*
+          - svelte/**/*
 
     - name: FTP Deploy Svelte
       uses: SamKirkland/FTP-Deploy-Action@4.0.0
