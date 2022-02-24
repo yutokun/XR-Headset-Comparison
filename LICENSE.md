@@ -9,7 +9,7 @@ Copyright (c) 2019 Julian Garnier
 
 ### Google Fonts
 
-"[Noto Sans JP](https://fonts.google.com/specimen/Noto+Sans+JP)" and "[Krub](https://fonts.google.com/specimen/Krub)" licensed under the SIL Open Font License
+"[Krub](https://fonts.google.com/specimen/Krub)" licensed under the SIL Open Font License
 
 [Open Font License](http://scripts.sil.org/cms/scripts/page.php?site_id=nrsi&id=OFL_web)
 

@@ -1,9 +1,0 @@
-{
-	"eqnull": true,
-	"esnext": true,
-	"browser": true,
-	"devel": true,
-	"globals": {
-		"anime": false
-	}
-}
