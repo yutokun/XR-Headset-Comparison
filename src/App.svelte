@@ -2,6 +2,8 @@
 	import { onMount } from "svelte";
 	import Create from "./Create.svelte";
 	import Header from "./Header.svelte";
+	import { Queries } from "./libs/queries";
+	import { applyFilters } from "./libs/table";
 	import Options from "./Options.svelte";
 	import Table from "./Table.svelte";
 
@@ -9,6 +11,10 @@
 	let creationMode: boolean;
 
 	function onTableLoaded() {
+		let queries = new Queries(window.location.search);
+		if (!queries.isEmpty) {
+			applyFilters(queries);
+		}
 		loadingMessageStyle = "display: none";
 	}
 
