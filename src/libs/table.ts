@@ -87,22 +87,17 @@ export function parse(sheetText: string) {
                 }
                 a.setAttribute("target", "_blank");
             } else {
-                // 税込み価格計算
+                // 税込み価格
                 // TODO 消費税率の変動に対応
                 cellData = cellData.replace(
-                    /\\ct{(\d.+?)}/g,
-                    (all: string, num: string) => {
+                    /\\ct([c]?){(\d.+?)}/g,
+                    (all: string, roundingMode: string, num: string) => {
                         let price = Number(num) * 1.1; // 税率
-                        price = Math.floor(price);
-                        return price.toLocaleString();
-                    }
-                );
-
-                cellData = cellData.replace(
-                    /\\ctc{(\d.+?)}/g,
-                    (all: string, num: string) => {
-                        let price = Number(num) * 1.1; // 税率
-                        price = Math.ceil(price);
+                        if (roundingMode === "c") {
+                            price = Math.ceil(price);
+                        } else {
+                            price = Math.floor(price);
+                        }
                         return price.toLocaleString();
                     }
                 );
