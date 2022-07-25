@@ -98,6 +98,15 @@ export function parse(sheetText: string) {
                     }
                 );
 
+                cellData = cellData.replace(
+                    /\\ctc{(\d.+?)}/g,
+                    (all: string, num: string) => {
+                        let price = Number(num) * 1.1; // 税率
+                        price = Math.ceil(price);
+                        return price.toLocaleString();
+                    }
+                );
+
                 // 改行
                 cell.innerText = cellData.replace(/\\n/g, "\n");
                 if (cellData.startsWith("-") || cellData.startsWith("?")) {
