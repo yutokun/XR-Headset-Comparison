@@ -38,7 +38,9 @@
 | --- | --- | --- | --- |
 | 画像を貼る | `\image{/path/to/image.jpg}` | `\image{images/headsets/Rift S.jpg}` | <img src="images/headsets/Rift S.jpg"> |
 | リンクを貼る | `\link{リンク名,URL`} | `\link{Rift S 公式サイト,https://www.oculus.com/rift-s/}` | [Rift S 公式サイト](https://www.oculus.com/rift-s/) |
-| 税抜き価格から税込価格を計算する | `\ct{税抜き価格}` | `\ct{89882}` | 98870 |
+| 税抜き価格から税込価格を計算する（四捨五入） | `\ct{税抜き価格}` | `\ct{89882}` | 98870 |
+| 同上（切り上げ） | `\ctc{税抜き価格}` | `\ctc{113636}` | 125000 |
+| 同上（切り捨て） | `\ctf{税抜き価格}` | `\ctf{113636}` | 124999 |
 | 改行する | `\n` | `\n` | 改行コードに変換されます |
 
 ## デプロイについて
