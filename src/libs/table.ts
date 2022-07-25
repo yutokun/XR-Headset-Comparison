@@ -90,13 +90,15 @@ export function parse(sheetText: string) {
                 // 税込み価格
                 // TODO 消費税率の変動に対応
                 cellData = cellData.replace(
-                    /\\ct([c]?){(\d.+?)}/g,
+                    /\\ct([fc]?){(\d.+?)}/g,
                     (all: string, roundingMode: string, num: string) => {
                         let price = Number(num) * 1.1; // 税率
                         if (roundingMode === "c") {
                             price = Math.ceil(price);
-                        } else {
+                        } else if (roundingMode === "f") {
                             price = Math.floor(price);
+                        } {
+                            price = Math.round(price);
                         }
                         return price.toLocaleString();
                     }
